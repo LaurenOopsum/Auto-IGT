@@ -1,5 +1,6 @@
 extends VBoxContainer
 
+signal create_preview(row_templates)
 
 
 func generate_format_rows() :
@@ -106,4 +107,13 @@ func _on_RowTotal_changed(new_total : String) :
 		V.line_count = int(new_total)
 
 
+func _on_GeneratePreview_pressed():
+# warning-ignore:unassigned_variable
+	var rows_array : Array
+	
+	for x in get_children() :
+		if x is RowDef :
+			rows_array.append(x.get_settings())
+	
+	emit_signal("create_preview", rows_array)
 

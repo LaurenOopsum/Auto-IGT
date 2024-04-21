@@ -15,3 +15,7 @@ func setup_row(row_num : int, line_array : Array) :
 
 func setup_blank_row(row_num : int) :
 	$RowNum.text = str(row_num)
+
+
+func get_settings() -> Array :
+	return [$Level.text, $Type.text, $Italic.pressed, $Bold.pressed, $Quotes.pressed]

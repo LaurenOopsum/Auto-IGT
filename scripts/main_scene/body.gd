@@ -22,4 +22,4 @@ func generate_formatting_rows() :
 
 
 func _on_GeneratePreview_pressed():
-	$Preview/ColorRect/PreviewGrid.create_preview()
+	$Preview/ColorRect/PreviewLines.create_preview()

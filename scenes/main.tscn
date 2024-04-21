@@ -235,7 +235,7 @@ margin_bottom = 470.0
 rect_min_size = Vector2( 470, 470 )
 size_flags_vertical = 4
 
-[node name="PreviewGrid" type="VBoxContainer" parent="Page/Body/Preview/ColorRect"]
+[node name="PreviewLines" type="VBoxContainer" parent="Page/Body/Preview/ColorRect"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 619.0
@@ -321,10 +321,11 @@ autowrap = true
 [connection signal="open_file_dialog" from="Page/Body/FileSettings/Buttons" to="FileDialog" method="open_file_dialog"]
 [connection signal="pressed" from="Page/Body/FileSettings/Buttons/SelectFile" to="Page/Body/FileSettings/Buttons" method="_on_SelectFile_pressed"]
 [connection signal="reset_preset" from="Page/Body/FileSettings/PhraseNumbers/Presets" to="Page/Body/FileSettings/RowDefinitions" method="run_templates"]
+[connection signal="create_preview" from="Page/Body/FileSettings/RowDefinitions" to="Page/Body/Preview/ColorRect/PreviewLines" method="create_preview"]
 [connection signal="text_changed" from="Page/Body/FileSettings/RowDefinitions/RowCount/RowTotal" to="Page/Body/FileSettings/PhraseNumbers/Presets" method="_on_RowTotal_text_changed"]
 [connection signal="text_changed" from="Page/Body/FileSettings/RowDefinitions/RowCount/RowTotal" to="Page/Body/FileSettings/RowDefinitions" method="_on_RowTotal_changed"]
 [connection signal="toggled" from="Page/Body/FileSettings/RowDefinitions/RowCount/Wrapping" to="Page/Body/FileSettings/RowDefinitions/RowCount/WrapLines" method="_on_Wrapping_toggled"]
 [connection signal="text_changed" from="Page/Body/FileSettings/RowDefinitions/RowCount/WrapLines" to="Page/Body/FileSettings/RowDefinitions/RowCount/Wrapping" method="_on_WrapLines_text_changed"]
-[connection signal="pressed" from="Page/Body/FileSettings/GeneratePreview" to="Page/Body" method="_on_GeneratePreview_pressed"]
+[connection signal="pressed" from="Page/Body/FileSettings/GeneratePreview" to="Page/Body/FileSettings/RowDefinitions" method="_on_GeneratePreview_pressed"]
 [connection signal="connect_parser" from="FileDialog" to="Page/Body" method="_connect_parser"]
 [connection signal="file_selected" from="FileDialog" to="FileDialog" method="_on_file_selected"]
