@@ -4,20 +4,40 @@ var gloss_grid : GridContainer
 var phrase : GlossNode
 
 func create_preview(rows_data : Array) :
-	set_phrase()
+	_grab_phrase(V.gloss_tree)
 	if V.end : print("Multiple phrases not yet supported")
 	else : 
 		for template in rows_data :
 			if [C.TYPE_NAMES[C.TYPE.PARAGRAPH], C.TYPE_NAMES[C.TYPE.PHRASE]].has(template[0].to_lower()) : 
 				create_single_row(template)
-			else : print("Grid preview line")
+			else : add_grid_row(template)
 
 ## Creates a non-grid row in the preview
 func create_single_row(template : Array) :
+	if gloss_grid : gloss_grid = null
 	var type := C.TYPE_NAMES.find(template[0].to_lower())
 	match type :
 		C.TYPE.PARAGRAPH : print("Pass paragraph")
 		C.TYPE.PHRASE : new_phrase(template)
+
+
+func add_grid_row(template : Array) :
+	if !gloss_grid : _add_new_gloss_grid()
+
+
+func _add_new_gloss_grid() :
+	gloss_grid = GridContainer.new()
+	gloss_grid.columns = get_word_count(phrase)
+
+
+func get_word_count(node : GlossNode) -> int :
+	var word_count := 0
+	for child in node.get_children() :
+		if child.node_type == C.TYPE_NAMES[C.TYPE.WORD] :
+			word_count += 1
+		else : word_count += get_word_count(child)
+	print(word_count)
+	return word_count
 
 
 func new_phrase(template : Array) :
@@ -35,10 +55,6 @@ func new_phrase(template : Array) :
 				return
 
 
-func set_phrase() :
-	_grab_phrase(V.gloss_tree)
-
-
 func _grab_phrase(node : Node) :
 	for item in node.get_children() :
 		if node is GlossNode && C.TYPE_NAMES.find(node.node_type) == C.TYPE.PHRASE :
@@ -50,8 +66,7 @@ func _grab_phrase(node : Node) :
 
 func is_set_phrase(phrase : GlossNode) -> bool :
 	for x in phrase.attributes :
-		if phrase.attributes[x] == "segnum" && phrase.node_value == str(V.start) :
-			print("SET PHRASE")
+		if phrase.attributes[x] == "segnum" && phrase.node_value == str(V.start) : 
 			return true
 	return false
 
