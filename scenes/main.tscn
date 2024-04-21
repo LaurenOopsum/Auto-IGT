@@ -1,0 +1,330 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scripts/main_scene/buttons.gd" type="Script" id=1]
+[ext_resource path="res://scripts/main_scene/file_dialog.gd" type="Script" id=2]
+[ext_resource path="res://scripts/main_scene/body.gd" type="Script" id=3]
+[ext_resource path="res://scripts/main_scene/preview_grid.gd" type="Script" id=4]
+[ext_resource path="res://scripts/main_scene/source_software.gd" type="Script" id=5]
+[ext_resource path="res://scripts/main_scene/row_definitions.gd" type="Script" id=6]
+[ext_resource path="res://scripts/main_scene/wrapping.gd" type="Script" id=7]
+[ext_resource path="res://scripts/main_scene/presets.gd" type="Script" id=8]
+[ext_resource path="res://scripts/main_scene/file_type.gd" type="Script" id=9]
+[ext_resource path="res://scripts/main_scene/wrap_lines.gd" type="Script" id=10]
+[ext_resource path="res://scripts/main_scene/instructions_dialog.gd" type="Script" id=11]
+[ext_resource path="res://scripts/main_scene/quit.gd" type="Script" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="Theme" id=1]
+GridContainer/constants/hseparation = 15
+HBoxContainer/constants/separation = 20
+HFlowContainer/constants/hseparation = 10
+MarginContainer/constants/margin_bottom = 20
+MarginContainer/constants/margin_left = 20
+MarginContainer/constants/margin_right = 20
+MarginContainer/constants/margin_top = 20
+VBoxContainer/constants/separation = 25
+VSeparator/styles/separator = SubResource( 5 )
+
+[sub_resource type="Theme" id=6]
+HBoxContainer/constants/separation = 10
+VBoxContainer/constants/separation = 10
+
+[node name="Margins" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 1 )
+
+[node name="Page" type="VBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 980.0
+margin_bottom = 580.0
+custom_constants/separation = 15
+alignment = 1
+
+[node name="ToolOptions" type="HBoxContainer" parent="Page"]
+margin_right = 960.0
+margin_bottom = 20.0
+alignment = 2
+
+[node name="Instructions" type="Button" parent="Page/ToolOptions"]
+margin_left = 811.0
+margin_right = 900.0
+margin_bottom = 20.0
+text = "Instructions"
+
+[node name="Quit" type="Button" parent="Page/ToolOptions"]
+margin_left = 920.0
+margin_right = 960.0
+margin_bottom = 20.0
+text = "Quit"
+script = ExtResource( 12 )
+
+[node name="Body" type="HBoxContainer" parent="Page"]
+margin_top = 35.0
+margin_right = 960.0
+margin_bottom = 560.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 3 )
+
+[node name="FileSettings" type="VBoxContainer" parent="Page/Body"]
+margin_right = 470.0
+margin_bottom = 525.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Buttons" type="HBoxContainer" parent="Page/Body/FileSettings"]
+margin_right = 470.0
+margin_bottom = 20.0
+alignment = 1
+script = ExtResource( 1 )
+
+[node name="FileType" type="MenuButton" parent="Page/Body/FileSettings/Buttons"]
+margin_left = 87.0
+margin_right = 151.0
+margin_bottom = 20.0
+text = ".flextext"
+flat = false
+items = [ ".flextext", null, 0, false, false, 0, 0, null, "", false ]
+script = ExtResource( 9 )
+
+[node name="SelectFile" type="Button" parent="Page/Body/FileSettings/Buttons"]
+margin_left = 171.0
+margin_right = 249.0
+margin_bottom = 20.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Select File"
+
+[node name="Programs" type="MenuButton" parent="Page/Body/FileSettings/Buttons"]
+margin_left = 269.0
+margin_right = 382.0
+margin_bottom = 20.0
+focus_mode = 2
+disabled = true
+text = "Source Software"
+flat = false
+align = 0
+script = ExtResource( 5 )
+
+[node name="PhraseNumbers" type="HBoxContainer" parent="Page/Body/FileSettings"]
+margin_top = 45.0
+margin_right = 470.0
+margin_bottom = 69.0
+alignment = 1
+
+[node name="Start" type="Label" parent="Page/Body/FileSettings/PhraseNumbers"]
+margin_left = 27.0
+margin_top = 5.0
+margin_right = 60.0
+margin_bottom = 19.0
+text = "Start:"
+
+[node name="StartNum" type="LineEdit" parent="Page/Body/FileSettings/PhraseNumbers"]
+margin_left = 80.0
+margin_right = 138.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 30, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+context_menu_enabled = false
+shortcut_keys_enabled = false
+placeholder_text = "1"
+
+[node name="End" type="Label" parent="Page/Body/FileSettings/PhraseNumbers"]
+margin_left = 158.0
+margin_top = 5.0
+margin_right = 185.0
+margin_bottom = 19.0
+custom_colors/font_color = Color( 0.219608, 0.196078, 0.196078, 1 )
+text = "End:"
+
+[node name="EndNum" type="LineEdit" parent="Page/Body/FileSettings/PhraseNumbers"]
+margin_left = 205.0
+margin_right = 263.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 30, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Presets" type="MenuButton" parent="Page/Body/FileSettings/PhraseNumbers"]
+margin_left = 283.0
+margin_right = 443.0
+margin_bottom = 24.0
+text = "3 line morpheme gloss"
+flat = false
+align = 0
+items = [ "Morpheme Glosses", null, 0, false, false, 7, 0, null, "", true, "3 lines", null, 0, false, false, 0, 0, null, "", false, "4 lines", null, 0, false, false, 1, 0, null, "", false, "Word glosses", null, 0, false, false, 6, 0, null, "", true, "3 lines", null, 0, false, false, 2, 0, null, "", false, "4 lines", null, 0, false, false, 3, 0, null, "", false, "", null, 0, false, false, 5, 0, null, "", true, "Custom gloss format", null, 0, false, false, 4, 0, null, "", false ]
+script = ExtResource( 8 )
+
+[node name="RowDefinitions" type="VBoxContainer" parent="Page/Body/FileSettings"]
+margin_top = 94.0
+margin_right = 470.0
+margin_bottom = 118.0
+theme = SubResource( 6 )
+script = ExtResource( 6 )
+
+[node name="RowCount" type="HBoxContainer" parent="Page/Body/FileSettings/RowDefinitions"]
+margin_right = 470.0
+margin_bottom = 24.0
+
+[node name="RowTotal" type="LineEdit" parent="Page/Body/FileSettings/RowDefinitions/RowCount"]
+margin_right = 58.0
+margin_bottom = 24.0
+text = "3"
+
+[node name="Label" type="Label" parent="Page/Body/FileSettings/RowDefinitions/RowCount"]
+margin_left = 68.0
+margin_top = 5.0
+margin_right = 135.0
+margin_bottom = 19.0
+text = "Line count"
+
+[node name="VSeparator" type="VSeparator" parent="Page/Body/FileSettings/RowDefinitions/RowCount"]
+margin_left = 145.0
+margin_right = 304.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Wrapping" type="CheckBox" parent="Page/Body/FileSettings/RowDefinitions/RowCount"]
+margin_left = 314.0
+margin_right = 402.0
+margin_bottom = 24.0
+custom_colors/font_color_disabled = Color( 0.219608, 0.196078, 0.196078, 1 )
+disabled = true
+text = "Wrapping"
+script = ExtResource( 7 )
+
+[node name="WrapLines" type="LineEdit" parent="Page/Body/FileSettings/RowDefinitions/RowCount"]
+margin_left = 412.0
+margin_right = 470.0
+margin_bottom = 24.0
+text = "1"
+editable = false
+script = ExtResource( 10 )
+
+[node name="GeneratePreview" type="Button" parent="Page/Body/FileSettings"]
+margin_left = 172.0
+margin_top = 143.0
+margin_right = 297.0
+margin_bottom = 163.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+text = "Generate Preview"
+
+[node name="Preview" type="VBoxContainer" parent="Page/Body"]
+margin_left = 490.0
+margin_right = 960.0
+margin_bottom = 525.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Page/Body/Preview"]
+margin_right = 470.0
+margin_bottom = 470.0
+rect_min_size = Vector2( 470, 470 )
+size_flags_vertical = 4
+
+[node name="PreviewGrid" type="VBoxContainer" parent="Page/Body/Preview/ColorRect"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 619.0
+margin_bottom = 616.0
+rect_scale = Vector2( 0.75, 0.75 )
+script = ExtResource( 4 )
+
+[node name="ClipboardButtons" type="HBoxContainer" parent="Page/Body/Preview"]
+margin_left = 166.0
+margin_top = 495.0
+margin_right = 304.0
+margin_bottom = 515.0
+size_flags_horizontal = 4
+
+[node name="MarkupLang" type="MenuButton" parent="Page/Body/Preview/ClipboardButtons"]
+margin_right = 49.0
+margin_bottom = 20.0
+size_flags_horizontal = 4
+disabled = true
+text = "LaTeX"
+
+[node name="CopyButton" type="Button" parent="Page/Body/Preview/ClipboardButtons"]
+margin_left = 69.0
+margin_right = 138.0
+margin_bottom = 20.0
+size_flags_horizontal = 4
+disabled = true
+text = "Copy IGT"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+margin_left = 200.0
+margin_top = 125.0
+margin_right = 800.0
+margin_bottom = 475.0
+rect_min_size = Vector2( 600, 350 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+window_title = "Select a File"
+dialog_hide_on_ok = true
+mode_overrides_title = false
+mode = 0
+access = 2
+script = ExtResource( 2 )
+
+[node name="InstructionsDialog" type="AcceptDialog" parent="."]
+margin_left = 150.0
+margin_top = 125.0
+margin_right = 850.0
+margin_bottom = 475.0
+rect_min_size = Vector2( 700, 350 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+window_title = "Instructions"
+script = ExtResource( 11 )
+
+[node name="MarginContainer" type="MarginContainer" parent="InstructionsDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -36.0
+custom_constants/margin_bottom = 30
+
+[node name="Instructions" type="Label" parent="InstructionsDialog/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 664.0
+margin_bottom = 276.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "1. Save your file in a supported format. Right now that's just .flextext.
+2. Click the \"Select File\" button and choose the file on your computer.
+3. The Source Software will automatically choose a default. Change it if needed. Right now, only .flextext files from FLEx are supported.
+4. Input the start and an optional end phrase. (Multiple phrases are not currently supported.) If only a start phrase is input, the tool will generate a table for a single phrase.
+5. Choose a preset glossing format or customize your own and click \"Generate Preview\".
+6. When the preview is formatted how you like, choose a markup language and click the \"Copy IGT\" button to copy the gloss to your clipboard. Only LaTeX markup is currently supported. Note that while the markup will preserve formatting such as bolding and italics, the displayed font will depend on your final document."
+valign = 1
+autowrap = true
+
+[connection signal="pressed" from="Page/ToolOptions/Instructions" to="InstructionsDialog" method="_on_Instructions_pressed"]
+[connection signal="pressed" from="Page/ToolOptions/Quit" to="Page/ToolOptions/Quit" method="_on_pressed"]
+[connection signal="open_file_dialog" from="Page/Body/FileSettings/Buttons" to="FileDialog" method="open_file_dialog"]
+[connection signal="pressed" from="Page/Body/FileSettings/Buttons/SelectFile" to="Page/Body/FileSettings/Buttons" method="_on_SelectFile_pressed"]
+[connection signal="reset_preset" from="Page/Body/FileSettings/PhraseNumbers/Presets" to="Page/Body/FileSettings/RowDefinitions" method="run_templates"]
+[connection signal="text_changed" from="Page/Body/FileSettings/RowDefinitions/RowCount/RowTotal" to="Page/Body/FileSettings/PhraseNumbers/Presets" method="_on_RowTotal_text_changed"]
+[connection signal="text_changed" from="Page/Body/FileSettings/RowDefinitions/RowCount/RowTotal" to="Page/Body/FileSettings/RowDefinitions" method="_on_RowTotal_changed"]
+[connection signal="toggled" from="Page/Body/FileSettings/RowDefinitions/RowCount/Wrapping" to="Page/Body/FileSettings/RowDefinitions/RowCount/WrapLines" method="_on_Wrapping_toggled"]
+[connection signal="text_changed" from="Page/Body/FileSettings/RowDefinitions/RowCount/WrapLines" to="Page/Body/FileSettings/RowDefinitions/RowCount/Wrapping" method="_on_WrapLines_text_changed"]
+[connection signal="pressed" from="Page/Body/FileSettings/GeneratePreview" to="Page/Body" method="_on_GeneratePreview_pressed"]
+[connection signal="connect_parser" from="FileDialog" to="Page/Body" method="_connect_parser"]
+[connection signal="file_selected" from="FileDialog" to="FileDialog" method="_on_file_selected"]

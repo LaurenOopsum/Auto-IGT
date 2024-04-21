@@ -1,0 +1,119 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "MenuButton",
+"class": "DropDown",
+"language": "GDScript",
+"path": "res://scripts/main_scene/drop_down.gd"
+}, {
+"base": "Parser",
+"class": "FlextextParser",
+"language": "GDScript",
+"path": "res://scripts/parsers/xml_parser.gd"
+}, {
+"base": "Node",
+"class": "GlossNode",
+"language": "GDScript",
+"path": "res://scripts/gloss_nodes/gloss_node.gd"
+}, {
+"base": "Node",
+"class": "GlossTree",
+"language": "GDScript",
+"path": "res://scripts/gloss_nodes/gloss_tree.gd"
+}, {
+"base": "Reference",
+"class": "IGTParser",
+"language": "GDScript",
+"path": "res://scripts/old_scripts/parsers/parser.gd"
+}, {
+"base": "Node",
+"class": "Morpheme",
+"language": "GDScript",
+"path": "res://scripts/old_scripts/gloss_elements/morpheme.gd"
+}, {
+"base": "Node",
+"class": "Parser",
+"language": "GDScript",
+"path": "res://scripts/parsers/parser.gd"
+}, {
+"base": "Node",
+"class": "Phrase",
+"language": "GDScript",
+"path": "res://scripts/old_scripts/gloss_elements/phrase.gd"
+}, {
+"base": "HBoxContainer",
+"class": "RowDef",
+"language": "GDScript",
+"path": "res://scripts/row_def/row_def.gd"
+}, {
+"base": "Node",
+"class": "SystemFileNavigator",
+"language": "GDScript",
+"path": "res://scripts/old_scripts/sys_file_navigator.gd"
+}, {
+"base": "Node",
+"class": "Word",
+"language": "GDScript",
+"path": "res://scripts/old_scripts/gloss_elements/word.gd"
+}, {
+"base": "Node",
+"class": "XMLItem",
+"language": "GDScript",
+"path": "res://scripts/old_scripts/gloss_elements/item.gd"
+} ]
+_global_script_class_icons={
+"DropDown": "",
+"FlextextParser": "",
+"GlossNode": "",
+"GlossTree": "",
+"IGTParser": "",
+"Morpheme": "",
+"Parser": "",
+"Phrase": "",
+"RowDef": "",
+"SystemFileNavigator": "",
+"Word": "",
+"XMLItem": ""
+}
+
+[application]
+
+config/name="Auto IGT"
+config/icon="res://assets/icon.png"
+
+[autoload]
+
+C="*res://scripts/autoloads/constants.gd"
+V="*res://scripts/autoloads/variables.gd"
+
+[debug]
+
+gdscript/completion/autocomplete_setters_and_getters=true
+
+[display]
+
+window/size/width=1000
+window/energy_saving/keep_screen_on=false
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+environment/default_environment="res://resources/default_env.tres"
