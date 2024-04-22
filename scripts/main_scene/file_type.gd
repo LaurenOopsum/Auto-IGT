@@ -1,3 +1,6 @@
+## DropDown for selecting a file type
+## Automatically updates global variable
+
 extends DropDown
 
 

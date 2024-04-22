@@ -1,10 +1,11 @@
-
+## Generates and displays the lines of preview text
 
 extends VBoxContainer
 
 var gloss_grid : GridContainer
 var phrase : GlossNode
 var word_array : Array
+
 
 func create_preview(rows_data : Array) :
 	for child in get_children() : child.queue_free()
@@ -16,7 +17,7 @@ func create_preview(rows_data : Array) :
 				create_single_row(template)
 			else : add_grid_row(template)
 
-## Creates a non-grid row in the preview
+## Creates a non-aligned row of text in the preview
 func create_single_row(template : Array) :
 	if gloss_grid : gloss_grid = null
 	var type := C.TYPE_NAMES.find(template[0].to_lower())
@@ -24,7 +25,7 @@ func create_single_row(template : Array) :
 		C.TYPE.PARAGRAPH : print("Pass paragraph")
 		C.TYPE.PHRASE : new_phrase(template)
 
-
+## Adds line of text in the preview that is word-aligned
 func add_grid_row(template : Array) :
 	if !gloss_grid : _add_new_gloss_grid()
 	
@@ -34,21 +35,12 @@ func add_grid_row(template : Array) :
 	
 #	print(row_array)
 
-
+## Adds a grid for aligned text, if there isn't already one
 func _add_new_gloss_grid() :
+	if !word_array : word_array = phrase.get_type_array(C.TYPE.WORD)
 	gloss_grid = GridContainer.new()
-	gloss_grid.columns = get_word_count(phrase)
+	gloss_grid.columns = word_array.size()
 	if !gloss_grid.get_parent() : add_child(gloss_grid)
-
-
-func get_word_count(node : GlossNode) -> int :
-	var word_count := 0
-	for child in node.get_children() :
-		if child.node_type == C.TYPE_NAMES[C.TYPE.WORD] :
-			word_array.append(child)
-			word_count += 1
-		else : word_count += get_word_count(child)
-	return word_count
 
 
 func get_row_array(template : Array, source_array : Array) -> Array :

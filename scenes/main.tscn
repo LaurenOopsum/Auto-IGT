@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/main_scene/buttons.gd" type="Script" id=1]
 [ext_resource path="res://scripts/main_scene/file_dialog.gd" type="Script" id=2]
 [ext_resource path="res://scripts/main_scene/body.gd" type="Script" id=3]
-[ext_resource path="res://scripts/main_scene/preview_grid.gd" type="Script" id=4]
+[ext_resource path="res://scripts/main_scene/preview_lines.gd" type="Script" id=4]
 [ext_resource path="res://scripts/main_scene/source_software.gd" type="Script" id=5]
 [ext_resource path="res://scripts/main_scene/row_definitions.gd" type="Script" id=6]
 [ext_resource path="res://scripts/main_scene/wrapping.gd" type="Script" id=7]
@@ -234,13 +234,13 @@ margin_bottom = 525.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="Page/Body/Preview"]
+[node name="Whiteboard" type="ColorRect" parent="Page/Body/Preview"]
 margin_right = 470.0
 margin_bottom = 470.0
 rect_min_size = Vector2( 470, 470 )
 size_flags_vertical = 4
 
-[node name="PreviewLines" type="VBoxContainer" parent="Page/Body/Preview/ColorRect"]
+[node name="PreviewLines" type="VBoxContainer" parent="Page/Body/Preview/Whiteboard"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -322,7 +322,7 @@ script = ExtResource( 11 )
 [connection signal="pressed" from="Page/Body/FileSettings/Buttons/SelectFile" to="Page/Body/FileSettings/Buttons" method="_on_SelectFile_pressed"]
 [connection signal="text_changed" from="Page/Body/FileSettings/PhraseNumbers/StartNum" to="Page/Body/FileSettings/PhraseNumbers/StartNum" method="_on_text_changed"]
 [connection signal="reset_preset" from="Page/Body/FileSettings/PhraseNumbers/Presets" to="Page/Body/FileSettings/RowDefinitions" method="run_templates"]
-[connection signal="create_preview" from="Page/Body/FileSettings/RowDefinitions" to="Page/Body/Preview/ColorRect/PreviewLines" method="create_preview"]
+[connection signal="create_preview" from="Page/Body/FileSettings/RowDefinitions" to="Page/Body/Preview/Whiteboard/PreviewLines" method="create_preview"]
 [connection signal="text_changed" from="Page/Body/FileSettings/RowDefinitions/RowCount/RowTotal" to="Page/Body/FileSettings/PhraseNumbers/Presets" method="_on_RowTotal_text_changed"]
 [connection signal="text_changed" from="Page/Body/FileSettings/RowDefinitions/RowCount/RowTotal" to="Page/Body/FileSettings/RowDefinitions" method="_on_RowTotal_changed"]
 [connection signal="toggled" from="Page/Body/FileSettings/RowDefinitions/RowCount/Wrapping" to="Page/Body/FileSettings/RowDefinitions/RowCount/WrapLines" method="_on_Wrapping_toggled"]
