@@ -54,4 +54,6 @@ const PRESET_TEMPLATES := [
 	[[TYPE.PHRASE, "txt"], [TYPE.WORD, "txt"], [TYPE.WORD, "gls"], [TYPE.PHRASE, "gls"]]
 ]
 
-
+## Loads a new instance of a RowDef template
+func get_row_template() -> RowDef :
+	return load("res://scenes/row_def.tscn").instance()

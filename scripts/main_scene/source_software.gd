@@ -1,7 +1,8 @@
+## DropDown for selecting the program that produced the file
+
 extends DropDown
 
-
-
+## Populates menu with list of supported programs
 func set_default_software() :
 	disabled = false
 	var pop_up := get_popup()
@@ -17,7 +18,7 @@ func set_default_software() :
 			text_set = true
 		idx += 1
 
-
+## Sets global value
 func _on_option_selected(idx : int) :
 	var pop_up := get_popup()
 	var id := pop_up.get_item_index(idx)

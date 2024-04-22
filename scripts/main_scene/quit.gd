@@ -1,3 +1,5 @@
+## Button that quits the program when clicked
+
 extends Button
 
 

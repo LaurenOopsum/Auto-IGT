@@ -1,6 +1,7 @@
+## Simple checkbox for indicating whether or not the gloss
+## needs line wrapping
+
 extends CheckBox
-
-
 
 
 func _on_WrapLines_text_changed(new_text : String) :

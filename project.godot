@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Parser",
 "class": "FlextextParser",
 "language": "GDScript",
-"path": "res://scripts/parsers/xml_parser.gd"
+"path": "res://scripts/parsers/flextext_parser.gd"
 }, {
 "base": "Node",
 "class": "GlossNode",
