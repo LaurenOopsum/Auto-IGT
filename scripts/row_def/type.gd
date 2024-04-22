@@ -1,3 +1,6 @@
+## DropDown that displays available row options
+## Generated from the attributes
+
 extends DropDown
 
 
@@ -5,7 +8,7 @@ func add_option(att_type : String) :
 	var popup := get_popup()
 	popup.add_item(att_type)
 
-
+## Triggered when signal received from change of Level DropDown
 func _on_level_changed(level : int):
 	var popup := get_popup()
 	popup.clear()
