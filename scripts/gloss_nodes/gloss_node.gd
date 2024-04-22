@@ -18,3 +18,12 @@ func get_value(attribute_name : String) -> String :
 
 func get_attribute_list() -> Array :
 	return attributes.keys()
+
+
+func is_match(match_attributes : PoolStringArray) -> bool :
+	var attribute_vals := attributes.values()
+	var matches := 0
+	for val in attribute_vals :
+		if match_attributes.has(val) : matches += 1
+	if matches == match_attributes.size() : return true
+	return false
