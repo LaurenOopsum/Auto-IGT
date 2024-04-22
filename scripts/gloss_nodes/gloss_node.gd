@@ -47,5 +47,5 @@ func get_type_array(type : int) -> Array :
 	for child in get_children() :
 		if child.node_type == C.TYPE_NAMES[type] :
 			array.append(child)
-		else : array.append_array(get_type_array(child))
+		else : array.append_array(child.get_type_array(type))
 	return array
