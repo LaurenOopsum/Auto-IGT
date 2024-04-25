@@ -50,45 +50,20 @@ func clear_rows() :
 ## Set the valid attributes of each line at each level of glossing
 func set_levels_attributes() :
 	V.level_attributes.clear()
-	cycle_nodes(V.gloss_tree.get_children())
+	_cycle_nodes(V.gloss_tree.get_children())
+	print(V.level_attributes)
 
 ## Cycles through all nodes to grab attributes
-func cycle_nodes(node_array : Array) :
+func _cycle_nodes(node_array : Array) :
 	for node in node_array :
 		var node_attributes : Array
+		# If not an item, add to the dictionary
 		if node.node_type != "item" : 
-			add_to_dict(node)
-			node_attributes = get_node_attributes(node)
-			add_new_attrbts(node.node_type, node_attributes)
-			cycle_nodes(node.get_children())
-	#	else : _node_attrbts(node)
+			node.add_to_dict()
+			_cycle_nodes(node.get_children())
+		# If an item, add attributes to dictionary entry
+		else : node.add_atts_to_dict()
 
-## Adds attributes to the array
-func add_new_attrbts(type : String, att_array : Array) :
-	var lvl_array : Array = V.level_attributes[type]
-	for att in att_array :
-		if !lvl_array.has(att) : lvl_array.append(att)
-
-
-func add_to_dict(gloss_node : GlossNode) :
-	if !V.level_attributes.has(gloss_node.node_type) :
-		V.level_attributes[gloss_node.node_type] = []
-
-
-func get_node_attributes(gloss_node : GlossNode) -> Array :
-# warning-ignore:unassigned_variable
-	var attribute_array : Array
-	for node in gloss_node.get_children() :
-		if node.node_type == "item" : attribute_array.append(_node_attrbts(node))
-	return attribute_array
-
-
-func _node_attrbts(node : GlossNode) -> String :
-	var att_row_def := ""
-	for att in node.get_attribute_list() :
-		att_row_def += ("-" + node.attributes[att])
-	att_row_def = att_row_def.lstrip("-")
-	return att_row_def
 
 ## Changes the displayed number of template rows
 ## when the text is changed

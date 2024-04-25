@@ -3,6 +3,7 @@
 extends VBoxContainer
 
 var gloss_grid : GridContainer
+
 var phrase : GlossNode
 var word_array : Array
 
@@ -27,20 +28,31 @@ func create_single_row(template : Array) :
 
 ## Adds line of text in the preview that is word-aligned
 func add_grid_row(template : Array) :
+	print("============")
 	if !gloss_grid : _add_new_gloss_grid()
-	
-#	var row_array := get_row_array(template, word_array)
-	
-	
+	var type := C.TYPE_NAMES.find(template[0].to_lower())
+	print(template[0])
+	print(type)
+	var type_list := phrase.get_type_array(type)
+	print(type_list)
+	var row_array := []
+	for node in type_list :
+		if node.is_match(template[1].split("-")) : 
+			row_array.append(node)
+		print(node.node_type)
 	
 #	print(row_array)
 
+	
+
 ## Adds a grid for aligned text, if there isn't already one
 func _add_new_gloss_grid() :
+	print("Gloss grid added")
 	if !word_array : word_array = phrase.get_type_array(C.TYPE.WORD)
 	gloss_grid = GridContainer.new()
 	gloss_grid.columns = word_array.size()
 	if !gloss_grid.get_parent() : add_child(gloss_grid)
+	print(word_array)
 
 
 func get_row_array(template : Array, source_array : Array) -> Array :
@@ -54,7 +66,7 @@ func get_row_array(template : Array, source_array : Array) -> Array :
 func new_phrase(template : Array) :
 	var phrase_label := Label.new()
 	var row_template : PoolStringArray = template[1].split("-")
-	print(row_template)
+#	print(row_template)
 	for item in phrase.get_children() :
 		if item.node_type == "item" :
 			var is_match := true
@@ -71,7 +83,7 @@ func _grab_phrase(node : Node) :
 		if node is GlossNode && C.TYPE_NAMES.find(node.node_type) == C.TYPE.PHRASE :
 			if item.node_type == "item" && is_set_phrase(item) :
 				phrase = node
-				print("Set node to phrase")
+#				print("Set node to phrase")
 		else : _grab_phrase(item)
 
 

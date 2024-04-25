@@ -13,7 +13,8 @@ const TYPE_NAMES := [
 	"paragraph",
 	"phrase",
 	"word",
-	"morph"
+	"morph",
+	"item"
 ]
 
 ## Names of the preset templates

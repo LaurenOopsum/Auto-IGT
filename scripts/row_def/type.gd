@@ -12,8 +12,9 @@ func add_option(att_type : String) :
 func _on_level_changed(level : int):
 	var popup := get_popup()
 	popup.clear()
-	for line_def in V.level_attributes[C.TYPE_NAMES[level]] :
-		add_option(line_def)
+	if V.level_attributes.has(C.TYPE_NAMES[level]) :
+		for line_def in V.level_attributes[C.TYPE_NAMES[level]] :
+			add_option(line_def)
 	if popup.get_item_count() > 0 :
 		text = popup.get_item_text(0)
 

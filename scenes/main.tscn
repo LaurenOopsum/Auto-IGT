@@ -265,8 +265,8 @@ size_flags_horizontal = 4
 margin_right = 49.0
 margin_bottom = 20.0
 size_flags_horizontal = 4
-disabled = true
 text = "LaTeX"
+flat = false
 
 [node name="CopyButton" type="Button" parent="Page/Body/Preview/ClipboardButtons"]
 margin_left = 69.0

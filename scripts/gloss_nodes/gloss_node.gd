@@ -21,13 +21,21 @@ func get_value(attribute_name : String) -> String :
 func get_attribute_list() -> Array :
 	return attributes.keys()
 
+
+func get_attribute_values() -> Array :
+	return attributes.values()
+
 ## Checks if this node matches the type of a row template
+## Works on the gloss element level and checks for items
+## REALLLLY need to make the items their own class
 func is_match(match_attributes : PoolStringArray) -> bool :
-	var attribute_vals := attributes.values()
-	var matches := 0
-	for val in attribute_vals :
-		if match_attributes.has(val) : matches += 1
-	if matches == match_attributes.size() : return true
+	for child in get_children() :
+		if child.node_type == "item" :
+			var attribute_vals : Array = child.attributes.values()
+			var matches := true
+			for val in attribute_vals :
+				if !match_attributes.has(val) : matches = false
+			if matches : return true
 	return false
 
 ## Returns the count of descendants of this node
@@ -49,3 +57,20 @@ func get_type_array(type : int) -> Array :
 			array.append(child)
 		else : array.append_array(child.get_type_array(type))
 	return array
+
+
+func add_to_dict() :
+	if !V.level_attributes.has(node_type) :
+		V.level_attributes[node_type] = []
+
+
+func add_atts_to_dict() :
+	if not get_parent() is GlossTree :
+		var parent_type : String = get_parent().node_type
+		var row_atts := ""
+		for att in attributes :
+			row_atts += "-" + attributes[att]
+		row_atts = row_atts.lstrip("-")
+		
+		if !V.level_attributes[parent_type].has(row_atts) :
+			V.level_attributes[parent_type].append(row_atts)
