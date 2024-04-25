@@ -267,6 +267,7 @@ margin_bottom = 20.0
 size_flags_horizontal = 4
 text = "LaTeX"
 flat = false
+items = [ "LaTeX", null, 0, false, false, 0, 0, null, "", false ]
 
 [node name="CopyButton" type="Button" parent="Page/Body/Preview/ClipboardButtons"]
 margin_left = 69.0

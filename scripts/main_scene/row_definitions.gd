@@ -28,6 +28,7 @@ func create_preset_format_rows(rows_values_array : Array) :
 	clear_rows()
 	V.line_count = rows_values_array.size()
 	$RowCount/RowTotal.text = str(V.line_count)
+#	var row_num := 0
 	for row in rows_values_array :
 		var new_row := C.get_row_template()
 		new_row.setup_row(row_num, row)
@@ -51,7 +52,7 @@ func clear_rows() :
 func set_levels_attributes() :
 	V.level_attributes.clear()
 	_cycle_nodes(V.gloss_tree.get_children())
-	print(V.level_attributes)
+#	print(V.level_attributes)
 
 ## Cycles through all nodes to grab attributes
 func _cycle_nodes(node_array : Array) :
