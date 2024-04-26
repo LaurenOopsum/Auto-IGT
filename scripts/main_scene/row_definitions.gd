@@ -57,7 +57,7 @@ func set_levels_attributes() :
 ## Cycles through all nodes to grab attributes
 func _cycle_nodes(node_array : Array) :
 	for node in node_array :
-		var node_attributes : Array
+	#	var node_attributes : Array
 		# If not an item, add to the dictionary
 		if node.node_type != "item" : 
 			node.add_to_dict()

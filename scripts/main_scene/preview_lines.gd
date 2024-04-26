@@ -30,16 +30,16 @@ func create_single_row(template : Array) :
 func add_grid_row(template : Array) :
 	print("============")
 	if !gloss_grid : _add_new_gloss_grid()
-	var type := C.TYPE_NAMES.find(template[0].to_lower())
+#	var type := C.TYPE_NAMES[]
 	print(template[0])
-	print(type)
-	var type_list := phrase.get_type_array(type)
-	print(type_list)
-	var row_array := []
-	for node in type_list :
-		if node.is_match(template[1].split("-")) : 
-			row_array.append(node)
-		print(node.node_type)
+#	print(type)
+#	var type_list := phrase.get_type_array(type)
+#	print(type_list)
+#	var row_array := []
+#	for node in type_list :
+#		if node.is_match(template[1].split("-")) : 
+#			row_array.append(node)
+#		print(node.node_type)
 	
 #	print(row_array)
 
@@ -47,12 +47,12 @@ func add_grid_row(template : Array) :
 
 ## Adds a grid for aligned text, if there isn't already one
 func _add_new_gloss_grid() :
-	print("Gloss grid added")
+#	print("Gloss grid added")
 	if !word_array : word_array = phrase.get_type_array(C.TYPE.WORD)
 	gloss_grid = GridContainer.new()
 	gloss_grid.columns = word_array.size()
 	if !gloss_grid.get_parent() : add_child(gloss_grid)
-	print(word_array)
+#	print(word_array)
 
 
 func get_row_array(template : Array, source_array : Array) -> Array :
@@ -64,7 +64,8 @@ func get_row_array(template : Array, source_array : Array) -> Array :
 
 
 func new_phrase(template : Array) :
-	var phrase_label := Label.new()
+	var phrase_label := RichTextLabel.new()
+	phrase_label.fit_content_height = true
 	var row_template : PoolStringArray = template[1].split("-")
 #	print(row_template)
 	for item in phrase.get_children() :
@@ -87,9 +88,9 @@ func _grab_phrase(node : Node) :
 		else : _grab_phrase(item)
 
 
-func is_set_phrase(phrase : GlossNode) -> bool :
-	for x in phrase.attributes :
-		if phrase.attributes[x] == "segnum" && phrase.node_value == str(V.start) : 
+func is_set_phrase(cur_phrase : GlossNode) -> bool :
+	for x in cur_phrase.attributes :
+		if cur_phrase.attributes[x] == "segnum" && cur_phrase.node_value == str(V.start) : 
 			return true
 	return false
 

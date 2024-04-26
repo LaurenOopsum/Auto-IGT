@@ -24,6 +24,7 @@ MarginContainer/constants/margin_bottom = 20
 MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 20
 MarginContainer/constants/margin_top = 20
+RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
 VBoxContainer/constants/separation = 25
 VSeparator/styles/separator = SubResource( 5 )
 
@@ -254,6 +255,10 @@ size_flags_vertical = 4
 theme = SubResource( 7 )
 script = ExtResource( 4 )
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Page/Body/Preview/Whiteboard/PreviewLines"]
+margin_right = 460.0
+text = "dfsdfs"
+
 [node name="ClipboardButtons" type="HBoxContainer" parent="Page/Body/Preview"]
 margin_left = 166.0
 margin_top = 495.0
@@ -267,7 +272,7 @@ margin_bottom = 20.0
 size_flags_horizontal = 4
 text = "LaTeX"
 flat = false
-items = [ "LaTeX", null, 0, false, false, 0, 0, null, "", false ]
+items = [ "LaTeX", null, 0, false, false, 0, 0, null, "", false, "Quarto (Static)", null, 0, false, true, 1, 0, null, "", false, "Quarto (Dynamic)", null, 0, false, true, 2, 0, null, "", false ]
 
 [node name="CopyButton" type="Button" parent="Page/Body/Preview/ClipboardButtons"]
 margin_left = 69.0
