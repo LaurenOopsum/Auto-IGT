@@ -21,7 +21,7 @@ func create_preview(rows_data : Array) :
 ## Creates a non-aligned row of text in the preview
 func create_single_row(template : Array) :
 	if gloss_grid : gloss_grid = null
-	var type := C.TYPE_NAMES.find(template[0].to_lower())
+	var type : int = template[0]
 	match type :
 		C.TYPE.PARAGRAPH : print("Pass paragraph")
 		C.TYPE.PHRASE : new_phrase(template)
@@ -55,7 +55,7 @@ func new_phrase(template : Array) :
 	phrase_label.fit_content_height = true
 	var row_template : PoolStringArray = template[1].split("-")
 	for item in phrase.get_children() :
-		if item.node_type == "item" :
+		if item is GlossNode :
 			var is_match := true
 			for att in item.get_attribute_list() :
 				if !row_template.has(item.attributes[att]) : is_match = false
@@ -67,8 +67,8 @@ func new_phrase(template : Array) :
 
 func _grab_phrase(node : Node) :
 	for item in node.get_children() :
-		if node is GlossNode && C.TYPE_NAMES.find(node.node_type) == C.TYPE.PHRASE :
-			if item.node_type == "item" && is_set_phrase(item) :
+		if node is GlossNode && node.node_type == C.TYPE.PHRASE :
+			if item.node_type == C.TYPE.ITEM && is_set_phrase(item) :
 				phrase = node
 		else : _grab_phrase(item)
 

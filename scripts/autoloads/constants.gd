@@ -3,20 +3,20 @@
 extends Node
 
 ## Basic int references to settings and options
-enum TYPE {IGT, PARAGRAPH, PHRASE, WORD, MORPH, ITEM}
+enum TYPE {PARAGRAPH, PHRASE, WORD, MORPH, ITEM, IGT}
 enum PRESET {MORPH3, MORPH4, WORD3, WORD4, CUSTOM}
 enum FILE_TYPE {FLEXTEXT}
 enum PROGRAM {FLEX, ELAN}
 
 ## Names of the different types of nodes
-const TYPE_NAMES := [
-	
-	"paragraph",
-	"phrase",
-	"word",
-	"morph",
-	"item"
-]
+#const TYPE_NAMES := [
+#	
+#	"paragraph",
+#	"phrase",
+#	"word",
+#	"morph",
+#	"item"
+#]
 
 ## Names of the preset templates
 const PRESET_NAMES := [

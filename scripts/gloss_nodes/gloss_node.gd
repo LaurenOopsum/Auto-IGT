@@ -25,7 +25,7 @@ func is_match(match_attributes : PoolStringArray) -> bool :
 func get_type_count(type : int) -> int :
 	var count := 0
 	for child in get_children() :
-		if child.node_type == C.TYPE_NAMES[type] :
+		if child.node_type == type :
 			count += 1
 		else : count += get_type_count(child)
 	return count
@@ -35,7 +35,7 @@ func get_type_count(type : int) -> int :
 func get_type_array(type : int) -> Array :
 	var array := []
 	for child in get_children() :
-		if child.node_type == C.TYPE_NAMES[type] :
+		if child.node_type == type :
 			array.append(child)
 		else : array.append_array(child.get_type_array(type))
 	return array

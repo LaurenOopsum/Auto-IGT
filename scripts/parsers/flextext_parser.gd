@@ -7,12 +7,13 @@ enum T {XML_NODE, XML_NODE_CLOSE, XML_TEXT}
 
 ## Names of the different types of nodes
 const TYPES := [
-	"interlinear-text",
+#	"interlinear-text",
 	"paragraph",
 	"phrase",
 	"word",
 	"morph",
 	"item",
+	"interlinear-text",
 	"text"
 ]
 
@@ -50,8 +51,11 @@ func get_element_type() -> int :
 	
 ## Processes an opening XML tag in the code_array
 func open_node() :
+#	print(TYPES[get_node_type()])
 	match get_node_type() :
-		C.TYPE.IGT : gloss_tree = GlossTree.new()
+		C.TYPE.IGT : 
+#			print("IGT")
+			gloss_tree = GlossTree.new()
 		C.TYPE.PARAGRAPH, C.TYPE.PHRASE, C.TYPE.WORD, C.TYPE.MORPH :
 			add_gloss_node()
 		C.TYPE.ITEM : add_gloss_item()
@@ -101,12 +105,13 @@ func add_gloss_item() :
 		gloss_tree.add_child(new_item)
 	elif !open_branch.empty() : 
 		open_branch.back().add_child(new_item)
+	set_item_attributes(new_item)
 	open_branch.append(new_item)
 
 
-func set_item_attributes() :
+func set_item_attributes(item : GlossItem) :
+	print("Set item attributes")
 	var elem_text : String = code_array[element_index]
-	var item : GlossNode = open_branch.back()
 	var cursor_position := 0
 	for x in elem_text.count("=") :
 		var equal := elem_text.find("=", cursor_position)

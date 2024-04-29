@@ -5,11 +5,15 @@ extends HBoxContainer
 
 ## Setup used for presets
 func setup_row(row_num : int, line_array : Array) :
+	print(line_array)
 	$RowNum.text = str(row_num)
 	if row_num == 1 && line_array[0] == C.TYPE.PHRASE : 
 		$Italic.pressed = true
 	if row_num == V.line_count : $Quotes.pressed = true
-	$Level.text = $Level.get_popup().get_item_text(line_array[0])
+	var popup : PopupMenu = $Level.get_popup()
+	var popup_id := popup.get_item_id(line_array[0])
+	var popup_text := popup.get_item_text(popup_id)
+	$Level.text = popup_text
 
 	$Type._on_level_changed(line_array[0])
 	$Type.set_default_value(line_array[1])

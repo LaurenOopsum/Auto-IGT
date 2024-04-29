@@ -59,7 +59,7 @@ func _cycle_nodes(node_array : Array) :
 	for node in node_array :
 	#	var node_attributes : Array
 		# If not an item, add to the dictionary
-		if not node is GlossItem : 
+		if node is GlossNode : 
 			node.add_to_dict()
 			_cycle_nodes(node.get_children())
 		# If an item, add attributes to dictionary entry
