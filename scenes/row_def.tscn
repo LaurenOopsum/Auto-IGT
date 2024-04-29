@@ -22,7 +22,7 @@ margin_bottom = 24.0
 focus_mode = 2
 text = "Level"
 flat = false
-items = [ "Paragraph", null, 0, false, false, 0, 0, null, "", false, "Phrase", null, 0, false, false, 1, 0, null, "", false, "Word", null, 0, false, false, 2, 0, null, "", false, "Morph", null, 0, false, false, 3, 0, null, "", false ]
+items = [ "Paragraph", null, 0, false, false, 1, 0, null, "", false, "Phrase", null, 0, false, false, 2, 0, null, "", false, "Word", null, 0, false, false, 3, 0, null, "", false, "Morph", null, 0, false, false, 4, 0, null, "", false ]
 script = ExtResource( 3 )
 
 [node name="Type" type="MenuButton" parent="."]

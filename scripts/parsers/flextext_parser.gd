@@ -5,6 +5,17 @@ extends Parser
 
 enum T {XML_NODE, XML_NODE_CLOSE, XML_TEXT}
 
+## Names of the different types of nodes
+const TYPES := [
+	"interlinear-text",
+	"paragraph",
+	"phrase",
+	"word",
+	"morph",
+	"item",
+	"text"
+]
+
 var open_branch : Array # GlossNodes
 
 
@@ -39,16 +50,20 @@ func get_element_type() -> int :
 	
 ## Processes an opening XML tag in the code_array
 func open_node() :
-	match get_node_name() :
-		"interlinear-text" : gloss_tree = GlossTree.new()
-		"paragraph", "phrase", "word", "morph", "item" :
+	match get_node_type() :
+		C.TYPE.IGT : gloss_tree = GlossTree.new()
+		C.TYPE.PARAGRAPH, C.TYPE.PHRASE, C.TYPE.WORD, C.TYPE.MORPH :
 			add_gloss_node()
+		C.TYPE.ITEM : add_gloss_item()
 
 ## Closes an open element and removes it from open_branch
 func close_node() :
-	match get_node_name() :
-		"paragraph", "phrase", "word", "morph", "item" :
-			if open_branch.back().node_type == get_node_name() :
+	match get_node_type() :
+		C.TYPE.PARAGRAPH, C.TYPE.PHRASE, C.TYPE.WORD, C.TYPE.MORPH :
+			if open_branch.back().node_type == get_node_type() :
+				open_branch.pop_back()
+		C.TYPE.ITEM :
+			if open_branch.back() is GlossItem :
 				open_branch.pop_back()
 
 ## Adds a String in the value var of the last Item in open_branch
@@ -56,7 +71,7 @@ func set_item_text() :
 	open_branch.back().node_value = code_array[element_index]
 
 ## Grabs the name of the current element in the code_array
-func get_node_name() -> String :
+func get_node_type() -> int :
 	var elem_text : String = code_array[element_index]
 	var elem_name : String
 	if elem_text.begins_with("</") :
@@ -66,17 +81,27 @@ func get_node_name() -> String :
 			elem_name = elem_text.left(elem_text.find(" ")).lstrip("<")
 		else : elem_name = elem_text.lstrip("<").rstrip(">")
 	else : elem_name = "text"
-	return elem_name
+#	print(elem_name)
+#	print(TYPES.find(elem_name))
+	return TYPES.find(elem_name)
 
 ## Adds a GlossNode to the GlossTree and open_branch
 func add_gloss_node() :
 	var new_node := GlossNode.new()
-	new_node.node_type = get_node_name()
-	if open_branch.empty() || new_node.node_type == "paragraph" :
+	new_node.node_type = get_node_type()
+	if open_branch.empty() || new_node.node_type == C.TYPE.PARAGRAPH :
 		gloss_tree.add_child(new_node)
 	else : open_branch.back().add_child(new_node)
 	open_branch.append(new_node)
-	if new_node.node_type == "item" : set_item_attributes()
+
+
+func add_gloss_item() :
+	var new_item := GlossItem.new()
+	if open_branch.empty() && gloss_tree :
+		gloss_tree.add_child(new_item)
+	elif !open_branch.empty() : 
+		open_branch.back().add_child(new_item)
+	open_branch.append(new_item)
 
 
 func set_item_attributes() :
