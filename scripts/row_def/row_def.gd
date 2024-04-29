@@ -25,4 +25,13 @@ func setup_blank_row(row_num : int) :
 
 ## Array of template settings
 func get_settings() -> Array :
-	return [$Level.text, $Type.text, $Italic.pressed, $Bold.pressed, $Quotes.pressed]
+	return [get_level(), $Type.text, $Italic.pressed, $Bold.pressed, $Quotes.pressed]
+
+
+func get_level() -> int :
+	match $Level.text :
+		"Paragraph" : return C.TYPE.PARAGRAPH
+		"Phrase" : return C.TYPE.PHRASE
+		"Word" : return C.TYPE.WORD
+		"Morph" : return C.TYPE.MORPH
+	return -1

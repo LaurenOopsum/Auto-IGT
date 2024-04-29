@@ -14,12 +14,14 @@ func create_preview(rows_data : Array) :
 	if V.end : print("Multiple phrases not yet supported")
 	else : 
 		for template in rows_data :
-			if [C.TYPE_NAMES[C.TYPE.PARAGRAPH], C.TYPE_NAMES[C.TYPE.PHRASE]].has(template[0].to_lower()) : 
+			print(template)
+			if [C.TYPE.PARAGRAPH, C.TYPE.PHRASE].has(template[0]) : 
 				create_single_row(template)
 			else : add_grid_row(template)
 
 ## Creates a non-aligned row of text in the preview
 func create_single_row(template : Array) :
+	print("single row")
 	if gloss_grid : gloss_grid = null
 	var type : int = template[0]
 	match type :
@@ -55,7 +57,7 @@ func new_phrase(template : Array) :
 	phrase_label.fit_content_height = true
 	var row_template : PoolStringArray = template[1].split("-")
 	for item in phrase.get_children() :
-		if item is GlossNode :
+		if item is GlossItem :
 			var is_match := true
 			for att in item.get_attribute_list() :
 				if !row_template.has(item.attributes[att]) : is_match = false
@@ -68,21 +70,16 @@ func new_phrase(template : Array) :
 func _grab_phrase(node : Node) :
 	for item in node.get_children() :
 		if node is GlossNode && node.node_type == C.TYPE.PHRASE :
-			if item.node_type == C.TYPE.ITEM && is_set_phrase(item) :
+			if item is GlossItem && is_set_phrase(item) :
 				phrase = node
 		else : _grab_phrase(item)
 
 
-func is_set_phrase(cur_phrase : GlossNode) -> bool :
+func is_set_phrase(cur_phrase : GlossItem) -> bool :
 	for x in cur_phrase.attributes :
 		if cur_phrase.attributes[x] == "segnum" && cur_phrase.node_value == str(V.start) : 
 			return true
 	return false
 
 
-## Get array of rows data
-## If any are not "phrase" or "paragraph"
-	## Get word count (1 time)
-	## Create grid (1 time ish)
-	## Find associated word
-	## Add to grid
+

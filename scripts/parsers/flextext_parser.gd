@@ -110,7 +110,6 @@ func add_gloss_item() :
 
 
 func set_item_attributes(item : GlossItem) :
-	print("Set item attributes")
 	var elem_text : String = code_array[element_index]
 	var cursor_position := 0
 	for x in elem_text.count("=") :

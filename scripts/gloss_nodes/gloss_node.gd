@@ -35,9 +35,9 @@ func get_type_count(type : int) -> int :
 func get_type_array(type : int) -> Array :
 	var array := []
 	for child in get_children() :
-		if child.node_type == type :
-			array.append(child)
-		else : array.append_array(child.get_type_array(type))
+		if not child is GlossItem : 
+			if child.node_type == type : array.append(child)
+			else : array.append_array(child.get_type_array(type))
 	return array
 
 
