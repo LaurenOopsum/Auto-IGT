@@ -5,7 +5,7 @@ extends Node
 
 
 var node_type : int # C.TYPE
-var grid : GridContainer # used in making previews
+var grid : PreviewGrid # used in making previews
 
 
 ## Checks if this node matches the type of a row template
@@ -44,4 +44,7 @@ func add_to_dict() :
 		V.level_attributes[node_type] = []
 
 
-
+func clear_grids() :
+	grid = null
+	for child in get_children() :
+		if not child is GlossItem : child.clear_grids()

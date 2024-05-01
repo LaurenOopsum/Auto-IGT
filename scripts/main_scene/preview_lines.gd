@@ -22,6 +22,7 @@ func grab_phrase(node : Node) :
 		if node is GlossNode && node.node_type == C.TYPE.PHRASE :
 			if item is GlossItem && _is_set_phrase(item) :
 				phrase = node
+				phrase.clear_grids()
 		else : grab_phrase(item)
 
 ## Displays each row of the gloss on screen
@@ -35,7 +36,7 @@ func print_preview_row(template : Array) :
 ## Creates a non-aligned row of text in the preview
 func add_phrase_row(template : Array) :
 	if phrase.grid : phrase.grid = null
-	var type : int = template[0]
+#	var type : int = template[0]
 	_add_new_phrase(template)
 
 ## Displays a phrase on the preview
@@ -67,11 +68,9 @@ func add_word_row(template : Array) :
 	_set_phrase_grid()
 	_set_words_array()
 	# The PreviewLabels that will be displayed on screen
-	var word_labels := _create_word_labels(template)
+	var word_labels := _create_labels(template, words_array)
 	# Set grid to the right number of columns
-	if phrase.grid.get_child_count() != 0 :
-		word_labels = _adjust_row_length(word_labels)
-	else : phrase.grid.columns = word_labels.size()
+	word_labels = phrase.grid._adjust_row_length(word_labels)
 	# add the new row at word-level
 	for word in word_labels :
 		phrase.grid.add_child(word)
@@ -88,37 +87,43 @@ func _set_words_array() :
 		words_array = phrase.get_type_array(C.TYPE.WORD)
 
 
-func _create_word_labels(template : Array) -> Array :
-	var word_labels := []
+func _create_labels(template : Array, array : Array) -> Array :
+	var labels := []
 	var match_pattern : PoolStringArray = template[1].split("-")
 
-	for word in words_array :
-		var items : Array = word.get_matching_items(match_pattern)
+	for x in array :
+		var items : Array = x.get_matching_items(match_pattern)
 		var label := PreviewText.new()
 		label.level = template[0] # == C.TYPE.WORD
 		if items.size() > 0 : label.text = items[0].node_value
-		word_labels.append(label)
+		labels.append(label)
 	
-	return word_labels
-
-
-func _adjust_row_length(word_labels : Array) -> Array :
-	var diff := word_labels.size() - phrase.grid.columns
-	# fill out the rest of the previous row
-	# increase column count
-	if diff > 0 : 
-		for x in diff :
-			var filler := Control.new()
-			phrase.grid.add_child(filler)
-		phrase.grid.columns = word_labels.size()
-	# fill out the rest of the array to a full row
-	elif diff < 0 :
-		for x in diff :
-			var filler := Control.new()
-			word_labels.append(filler)
-	
-	return word_labels
+	return labels
 
 
 func add_morph_row(template : Array) :
-	pass
+	_set_phrase_grid()
+	_set_words_array()
+	
+	var m_grids := []
+	
+	for word in words_array :
+		if !word.grid || !is_instance_valid(word.grid) : 
+			word.grid = PreviewGrid.new()
+		if !m_grids.has(word.grid) : 
+			m_grids.append(word.grid)
+
+		var morphs_array : Array = word.get_type_array(template[0])
+		var morphs_labels : Array = _create_labels(template, morphs_array)
+		morphs_labels = word.grid._adjust_row_length(morphs_labels)
+		
+		for morph in morphs_labels :
+			word.grid.add_child(morph)
+	print(m_grids)
+		
+	
+	m_grids = phrase.grid._adjust_row_length(m_grids)
+	
+	for grid in m_grids :
+		if !grid.is_inside_tree() : phrase.grid.add_child(grid)
+
