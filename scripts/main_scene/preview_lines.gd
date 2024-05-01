@@ -121,7 +121,7 @@ func add_morph_row(template : Array) :
 		
 		for morph in morphs_labels :
 			word.grid.add_child(morph)
-#	print(m_grids)
+
 		
 	
 	m_grids = phrase.grid._adjust_row_length(m_grids)

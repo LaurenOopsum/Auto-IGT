@@ -10,9 +10,6 @@ func add_option(att_type : String) :
 
 ## Triggered when signal received from change of Level DropDown
 func _on_level_changed(level : int):
-#	print(V.level_attributes)
-#	print("Level changed level")
-#	print(level)
 	var popup := get_popup()
 	popup.clear()
 

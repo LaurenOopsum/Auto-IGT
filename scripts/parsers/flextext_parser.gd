@@ -51,10 +51,8 @@ func get_element_type() -> int :
 	
 ## Processes an opening XML tag in the code_array
 func open_node() :
-#	print(TYPES[get_node_type()])
 	match get_node_type() :
 		C.TYPE.IGT : 
-#			print("IGT")
 			gloss_tree = GlossTree.new()
 		C.TYPE.PARAGRAPH, C.TYPE.PHRASE, C.TYPE.WORD, C.TYPE.MORPH :
 			add_gloss_node()
@@ -85,8 +83,6 @@ func get_node_type() -> int :
 			elem_name = elem_text.left(elem_text.find(" ")).lstrip("<")
 		else : elem_name = elem_text.lstrip("<").rstrip(">")
 	else : elem_name = "text"
-#	print(elem_name)
-#	print(TYPES.find(elem_name))
 	return TYPES.find(elem_name)
 
 ## Adds a GlossNode to the GlossTree and open_branch

@@ -10,6 +10,7 @@ var phrase : GlossNode
 func _ready() :
 	var pop_up := get_popup()
 	if !pop_up.is_connected("id_pressed", self, "_on_option_selected") :
+# warning-ignore:return_value_discarded
 		pop_up.connect("id_pressed", self, "_on_option_selected")
 	pop_up.set_current_index(0)
 	

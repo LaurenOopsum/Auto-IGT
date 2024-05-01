@@ -5,7 +5,6 @@ extends HBoxContainer
 
 ## Setup used for presets
 func setup_row(row_num : int, line_array : Array) :
-	print(line_array)
 	$RowNum.text = str(row_num)
 	if row_num == 1 && line_array[0] == C.TYPE.PHRASE : 
 		$Italic.pressed = true
