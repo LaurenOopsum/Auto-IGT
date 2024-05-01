@@ -5,20 +5,18 @@ extends Node
 
 
 var node_type : int # C.TYPE
+var grid : GridContainer # used in making previews
 
 
 ## Checks if this node matches the type of a row template
 ## Works on the gloss element level and checks for items
 ## REALLLLY need to make the items their own class
-func is_match(match_attributes : PoolStringArray) -> bool :
+func get_matching_items(match_attributes : PoolStringArray) -> Array :
+	var matches := [] # GlossItems
 	for child in get_children() :
-		if child is GlossItem :
-			var attribute_vals : Array = child.attributes.values()
-			var matches := true
-			for val in attribute_vals :
-				if !match_attributes.has(val) : matches = false
-			if matches : return true
-	return false
+		if child is GlossItem && child.is_match(match_attributes) :
+			matches.append(child)
+	return matches
 
 ## Returns the count of descendants of this node
 ## that are of the specified type

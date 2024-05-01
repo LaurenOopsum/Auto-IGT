@@ -34,3 +34,10 @@ func add_atts_to_dict() :
 		
 		if !V.level_attributes[parent_type].has(row_atts) :
 			V.level_attributes[parent_type].append(row_atts)
+
+
+func is_match(match_attributes : PoolStringArray) -> bool :
+	var matches := true
+	for val in get_attribute_values() :
+		if !match_attributes.has(val) : matches = false
+	return matches

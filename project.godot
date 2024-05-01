@@ -54,6 +54,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/old_scripts/gloss_elements/phrase.gd"
 }, {
+"base": "GridContainer",
+"class": "PreviewGrid",
+"language": "GDScript",
+"path": "res://scripts/preview_nodes/preview_grid.gd"
+}, {
+"base": "Label",
+"class": "PreviewText",
+"language": "GDScript",
+"path": "res://scripts/preview_nodes/preview_text.gd"
+}, {
 "base": "HBoxContainer",
 "class": "RowDef",
 "language": "GDScript",
@@ -84,6 +94,8 @@ _global_script_class_icons={
 "Morpheme": "",
 "Parser": "",
 "Phrase": "",
+"PreviewGrid": "",
+"PreviewText": "",
 "RowDef": "",
 "SystemFileNavigator": "",
 "Word": "",
