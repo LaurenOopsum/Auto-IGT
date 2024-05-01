@@ -2,7 +2,7 @@
 
 extends VBoxContainer
 
-#var gloss_grid : GridContainer
+signal send_phrase(phrase_node)
 
 var phrase : GlossNode
 var words_array := []
@@ -14,6 +14,7 @@ func create_preview(rows_data : Array) :
 	if V.end : print("Multiple phrases not yet supported")
 	else : 
 		for template in rows_data : print_preview_row(template)
+	_on_phrase_requested()
 
 
 ## Sets the active phrase to gloss
@@ -24,6 +25,7 @@ func grab_phrase(node : Node) :
 				phrase = node
 				phrase.clear_grids()
 		else : grab_phrase(item)
+
 
 ## Displays each row of the gloss on screen
 ## Only does phrase, word, and morph level right now
@@ -119,7 +121,7 @@ func add_morph_row(template : Array) :
 		
 		for morph in morphs_labels :
 			word.grid.add_child(morph)
-	print(m_grids)
+#	print(m_grids)
 		
 	
 	m_grids = phrase.grid._adjust_row_length(m_grids)
@@ -127,3 +129,6 @@ func add_morph_row(template : Array) :
 	for grid in m_grids :
 		if !grid.is_inside_tree() : phrase.grid.add_child(grid)
 
+
+func _on_phrase_requested():
+	emit_signal("send_phrase", phrase)

@@ -15,3 +15,5 @@ var line_count := 3
 var wrap_count := 1 # For wrapping long glosses, not yet supported
 
 var level_attributes : Dictionary
+
+
