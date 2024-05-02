@@ -23,6 +23,6 @@ Running the program from the engine is simple, once installed.
 
 ## Limitations
 
-Right now AIGT only handles .flextext files exported from FLEx.
+Right now AIGT only handles .flextext files exported from FLEx. It also only copies LaTeX tables right now.
 
 The file navigation system in the program isn't the best, so I recommend copying the path to your .flextext file from a system window and pasting it directly into the file selection dialog box in AIGT.
