@@ -2,7 +2,7 @@
 
 extends VBoxContainer
 
-signal send_phrase(phrase_node)
+signal send_phrase(phrase_node, rows_data)
 
 var phrase : GlossNode
 var words_array := []
@@ -14,7 +14,7 @@ func create_preview(rows_data : Array) :
 	if V.end : print("Multiple phrases not yet supported")
 	else : 
 		for template in rows_data : print_preview_row(template)
-	_on_phrase_requested()
+	emit_signal("send_phrase", phrase, rows_data)
 
 
 ## Sets the active phrase to gloss
@@ -130,5 +130,4 @@ func add_morph_row(template : Array) :
 		if !grid.is_inside_tree() : phrase.grid.add_child(grid)
 
 
-func _on_phrase_requested():
-	emit_signal("send_phrase", phrase)
+

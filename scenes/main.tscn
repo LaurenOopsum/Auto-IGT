@@ -344,6 +344,5 @@ script = ExtResource( 11 )
 [connection signal="text_changed" from="Page/Body/FileSettings/RowDefinitions/RowCount/WrapLines" to="Page/Body/FileSettings/RowDefinitions/RowCount/Wrapping" method="_on_WrapLines_text_changed"]
 [connection signal="pressed" from="Page/Body/FileSettings/GeneratePreview" to="Page/Body/FileSettings/RowDefinitions" method="_on_GeneratePreview_pressed"]
 [connection signal="send_phrase" from="Page/Body/Preview/Whiteboard/PreviewLines" to="Page/Body/Preview/ClipboardButtons/MarkupLang" method="_on_phrase_received"]
-[connection signal="req_phrase" from="Page/Body/Preview/ClipboardButtons/MarkupLang" to="Page/Body/Preview/Whiteboard/PreviewLines" method="_on_phrase_requested"]
 [connection signal="connect_parser" from="FileDialog" to="Page/Body" method="_connect_parser"]
 [connection signal="file_selected" from="FileDialog" to="FileDialog" method="_on_file_selected"]

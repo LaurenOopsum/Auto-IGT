@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/old_scripts/parsers/parser.gd"
 }, {
+"base": "Xerox",
+"class": "LatexXerox",
+"language": "GDScript",
+"path": "res://scripts/xeroxes/latex.gd"
+}, {
 "base": "Node",
 "class": "Morpheme",
 "language": "GDScript",
@@ -83,6 +88,11 @@ _global_script_classes=[ {
 "class": "XMLItem",
 "language": "GDScript",
 "path": "res://scripts/old_scripts/gloss_elements/item.gd"
+}, {
+"base": "GDScript",
+"class": "Xerox",
+"language": "GDScript",
+"path": "res://scripts/xeroxes/xerox.gd"
 } ]
 _global_script_class_icons={
 "DropDown": "",
@@ -91,6 +101,7 @@ _global_script_class_icons={
 "GlossNode": "",
 "GlossTree": "",
 "IGTParser": "",
+"LatexXerox": "",
 "Morpheme": "",
 "Parser": "",
 "Phrase": "",
@@ -99,7 +110,8 @@ _global_script_class_icons={
 "RowDef": "",
 "SystemFileNavigator": "",
 "Word": "",
-"XMLItem": ""
+"XMLItem": "",
+"Xerox": ""
 }
 
 [application]

@@ -7,6 +7,7 @@ enum TYPE {PARAGRAPH, PHRASE, WORD, MORPH, ITEM, IGT}
 enum PRESET {MORPH3, MORPH4, WORD3, WORD4, CUSTOM}
 enum FILE_TYPE {FLEXTEXT}
 enum PROGRAM {FLEX, ELAN}
+enum MARKUP {LATEX, QUARTO_ST, QUARTO_DY}
 
 ## Names of the different types of nodes
 #const TYPE_NAMES := [
@@ -55,6 +56,23 @@ const PRESET_TEMPLATES := [
 	[[TYPE.WORD, "txt"], [TYPE.WORD, "gls"], [TYPE.PHRASE, "gls"]],
 	[[TYPE.PHRASE, "txt"], [TYPE.WORD, "txt"], [TYPE.WORD, "gls"], [TYPE.PHRASE, "gls"]]
 ]
+
+
+const OPEN_CLOSE := [
+	[
+		"\\begin{tabular}{ ",
+		"\\end{tabular}"
+	],
+	[
+		"Quarto static open",
+		"Quarto static close"
+	],
+	[
+		"Quarto dynamic open",
+		"Quarto dymanic close"
+	]
+]
+
 
 ## Loads a new instance of a RowDef template
 func get_row_template() -> RowDef :
