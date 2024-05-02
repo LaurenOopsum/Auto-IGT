@@ -15,7 +15,7 @@
 [ext_resource path="res://scripts/main_scene/start_num.gd" type="Script" id=13]
 [ext_resource path="res://scripts/main_scene/markup_copy.gd" type="Script" id=14]
 [ext_resource path="res://scripts/preview_nodes/preview_text.gd" type="Script" id=15]
-[ext_resource path="res://dynamic_fonts/fonts/ARIALN.TTF" type="DynamicFontData" id=16]
+[ext_resource path="res://dynamic_fonts/fonts/arial.ttf" type="DynamicFontData" id=16]
 
 [sub_resource type="StyleBoxEmpty" id=5]
 

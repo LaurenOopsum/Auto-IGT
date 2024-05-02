@@ -3,7 +3,6 @@ class_name LatexXerox
 extends Xerox
 
 
-
 func clipboard_copy() :
 	var latext : String = C.OPEN_CLOSE[C.MARKUP.LATEX][0]
 	var row_node_arrays := get_row_node_arrays()

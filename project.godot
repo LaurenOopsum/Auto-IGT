@@ -117,6 +117,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Auto IGT"
+run/main_scene="res://scenes/main.tscn"
 config/icon="res://images/icon.png"
 
 [autoload]
