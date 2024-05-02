@@ -64,16 +64,16 @@ margin_bottom = 20.0
 alignment = 2
 
 [node name="Instructions" type="Button" parent="Page/ToolOptions"]
-margin_left = 811.0
-margin_right = 900.0
+margin_left = 734.0
+margin_right = 835.0
 margin_bottom = 20.0
-text = "Instructions"
+text = "INST_BUTTON"
 
 [node name="Quit" type="Button" parent="Page/ToolOptions"]
-margin_left = 920.0
+margin_left = 855.0
 margin_right = 960.0
 margin_bottom = 20.0
-text = "Quit"
+text = "QUIT_BUTTON"
 script = ExtResource( 12 )
 
 [node name="Body" type="HBoxContainer" parent="Page"]
@@ -131,15 +131,15 @@ margin_bottom = 69.0
 alignment = 1
 
 [node name="Start" type="Label" parent="Page/Body/FileSettings/PhraseNumbers"]
-margin_left = 27.0
+margin_left = 36.0
 margin_top = 5.0
-margin_right = 60.0
+margin_right = 98.0
 margin_bottom = 19.0
-text = "Start:"
+text = "START_PH"
 
 [node name="StartNum" type="LineEdit" parent="Page/Body/FileSettings/PhraseNumbers"]
-margin_left = 80.0
-margin_right = 138.0
+margin_left = 118.0
+margin_right = 176.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 30, 0 )
 size_flags_horizontal = 4
@@ -150,16 +150,16 @@ placeholder_text = "1"
 script = ExtResource( 13 )
 
 [node name="End" type="Label" parent="Page/Body/FileSettings/PhraseNumbers"]
-margin_left = 158.0
+margin_left = 196.0
 margin_top = 5.0
-margin_right = 185.0
+margin_right = 247.0
 margin_bottom = 19.0
 custom_colors/font_color = Color( 0.219608, 0.196078, 0.196078, 1 )
-text = "End:"
+text = "END_PH"
 
 [node name="EndNum" type="LineEdit" parent="Page/Body/FileSettings/PhraseNumbers"]
-margin_left = 205.0
-margin_right = 263.0
+margin_left = 267.0
+margin_right = 325.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 30, 0 )
 size_flags_horizontal = 4
@@ -173,10 +173,10 @@ selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 
 [node name="Presets" type="MenuButton" parent="Page/Body/FileSettings/PhraseNumbers"]
-margin_left = 283.0
-margin_right = 443.0
+margin_left = 345.0
+margin_right = 433.0
 margin_bottom = 24.0
-text = "3 line morpheme gloss"
+text = "3_L_MORPH"
 flat = false
 align = 0
 items = [ "Morpheme Glosses", null, 0, false, false, 7, 0, null, "", true, "3 lines", null, 0, false, false, 0, 0, null, "", false, "4 lines", null, 0, false, false, 1, 0, null, "", false, "Word glosses", null, 0, false, false, 6, 0, null, "", true, "3 lines", null, 0, false, false, 2, 0, null, "", false, "4 lines", null, 0, false, false, 3, 0, null, "", false, "", null, 0, false, false, 5, 0, null, "", true, "Custom gloss format", null, 0, false, false, 4, 0, null, "", false ]
@@ -201,23 +201,23 @@ text = "3"
 [node name="Label" type="Label" parent="Page/Body/FileSettings/RowDefinitions/RowCount"]
 margin_left = 68.0
 margin_top = 5.0
-margin_right = 135.0
+margin_right = 149.0
 margin_bottom = 19.0
-text = "Line count"
+text = "LINE_COUNT"
 
 [node name="VSeparator" type="VSeparator" parent="Page/Body/FileSettings/RowDefinitions/RowCount"]
-margin_left = 145.0
-margin_right = 304.0
+margin_left = 159.0
+margin_right = 293.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 
 [node name="Wrapping" type="CheckBox" parent="Page/Body/FileSettings/RowDefinitions/RowCount"]
-margin_left = 314.0
+margin_left = 303.0
 margin_right = 402.0
 margin_bottom = 24.0
 custom_colors/font_color_disabled = Color( 0.219608, 0.196078, 0.196078, 1 )
 disabled = true
-text = "Wrapping"
+text = "WRAPPING"
 script = ExtResource( 7 )
 
 [node name="WrapLines" type="LineEdit" parent="Page/Body/FileSettings/RowDefinitions/RowCount"]
@@ -229,23 +229,23 @@ editable = false
 script = ExtResource( 10 )
 
 [node name="ClipboardButtons" type="HBoxContainer" parent="Page/Body/FileSettings"]
-margin_left = 145.0
+margin_left = 159.0
 margin_top = 143.0
-margin_right = 325.0
+margin_right = 311.0
 margin_bottom = 163.0
 size_flags_horizontal = 4
 
 [node name="GeneratePreview" type="Button" parent="Page/Body/FileSettings/ClipboardButtons"]
-margin_right = 111.0
+margin_right = 83.0
 margin_bottom = 20.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 disabled = true
-text = "Preview & Copy"
+text = "PREV_COPY"
 
 [node name="MarkupLang" type="MenuButton" parent="Page/Body/FileSettings/ClipboardButtons"]
-margin_left = 131.0
-margin_right = 180.0
+margin_left = 103.0
+margin_right = 152.0
 margin_bottom = 20.0
 size_flags_horizontal = 4
 text = "LaTeX"
@@ -295,7 +295,7 @@ margin_top = 220.0
 margin_right = 460.0
 margin_bottom = 239.0
 focus_mode = 2
-text = "Preview will appear here"
+text = "PREV_TEXT"
 script = ExtResource( 15 )
 
 [node name="FileDialog" type="FileDialog" parent="."]
@@ -322,19 +322,7 @@ rect_min_size = Vector2( 700, 350 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 window_title = "Instructions"
-dialog_text = "	1. Save your file in a supported format. Right now that's just .flextext.
-
-	2. Click the \"Select File\" button and choose the file on your computer.
-
-	3. The Source Software will automatically choose a default. Change it if needed. Right now, only .flextext files from FLEx are supported.
-
-	4. Input the start and an optional end phrase. (Multiple phrases are not currently supported.) If only a start phrase is input, the tool will generate a table for a single phrase.
-
-	5. Choose a preset glossing format or customize your own and click \"Preview & Copy\".
-
-	6. When the preview is formatted how you like, choose a markup language and click the \"Copy IGT\" button to copy the gloss to your clipboard. Only LaTeX markup is currently supported. Note that while the markup will preserve formatting such as bolding and italics, the displayed font will depend on your final document.
-
-	I hope AIGT is helpful for you. Email me at lcornwel@hawaii.edu if you have questions or suggestions."
+dialog_text = "INST_TEXT"
 dialog_autowrap = true
 script = ExtResource( 11 )
 
