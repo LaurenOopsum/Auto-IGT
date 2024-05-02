@@ -78,7 +78,7 @@ func print_markup_rows(row_node_arrays : Array, col_count : int) -> String :
 	
 
 func _mu_phrase_row(row : Array, col_count : int, template : Array) -> String : 
-	return "\t" + add_multicol_val(row[0], get_pattern(template), col_count)
+	return "\t" + add_multicol_val(row[0], template, col_count)
 
 func _mu_word_row(row : Array, row_node_arrays : Array, template : Array) -> String : 
 	var latext := "\t"
@@ -87,8 +87,8 @@ func _mu_word_row(row : Array, row_node_arrays : Array, template : Array) -> Str
 	
 	if morph_locs.size() > 0 : 
 		var morph_row : Array = row_node_arrays[morph_locs[0]]
-		latext += _set_words_yes_morphs(row, morph_row, get_pattern(template))
-	else : latext += _set_words_no_morphs(row, get_pattern(template))
+		latext += _set_words_yes_morphs(row, morph_row, template)
+	else : latext += _set_words_no_morphs(row, template)
 	
 	return latext
 
@@ -103,38 +103,42 @@ func _get_morph_locations(row_node_arrays : Array) -> PoolIntArray :
 	return locations
 
 
-func _set_words_yes_morphs(row : Array, morph_row : Array, match_pattern : PoolStringArray) -> String :
+func _set_words_yes_morphs(row : Array, morph_row : Array, template : Array) -> String :
 	var latext := ""
 	for word in row :
 		var morph_count := 0
 		for morph in morph_row :
 			if morph.get_parent() == word : morph_count += 1
 		if morph_count > 1 : 
-			latext += add_multicol_val(word, match_pattern, morph_count)
+			latext += add_multicol_val(word, template, morph_count)
 			latext += " & "
-		else : latext += add_single_val(word, match_pattern)
+		else : latext += add_single_val(word, template)
 	latext = latext.rstrip(" & ")
 	return latext
 
 
-func _set_words_no_morphs(row : Array, match_pattern : PoolStringArray) -> String:
+func _set_words_no_morphs(row : Array, template : Array) -> String:
 	var latext := ""
-	for word in row : latext += add_single_val(word, match_pattern)
+	for word in row : latext += add_single_val(word, template)
 	latext = latext.rstrip(" & ")
 	return latext
 
 
-func add_single_val(val : GlossNode, match_pattern : PoolStringArray) -> String :
+func add_single_val(val : GlossNode, template : Array) -> String :
 	var latext := ""
-	var match_items : Array = val.get_matching_items(match_pattern)
+	var match_items : Array = val.get_matching_items(get_pattern(template))
 	for item in match_items :
 		latext += item.node_value + " & "
 	return latext
 	
-func add_multicol_val(word : GlossNode, match_pattern : PoolStringArray, col_count : int) -> String :
+func add_multicol_val(val : GlossNode, template : Array , col_count : int) -> String :
 	var latext := "\\multicolumn{" + str(col_count) + "}{ l }{"
-	var item : Array = word.get_matching_items(match_pattern)
-	latext += item[0].node_value
+	var item : Array = val.get_matching_items(get_pattern(template))
+	
+	var text : String = item[0].node_value
+	text = format(text, template)
+	
+	latext += text
 	
 	return latext + "}"
 
@@ -142,10 +146,18 @@ func add_multicol_val(word : GlossNode, match_pattern : PoolStringArray, col_cou
 func _mu_morph_row(row : Array, template : Array) -> String : 
 	var latext := "\t"
 	for morph in row :
-		latext += add_single_val(morph, get_pattern(template))
+		latext += add_single_val(morph, template)
 	latext = latext.rstrip(" & ")
 	return latext
 
 
 func get_pattern(template : Array) -> PoolStringArray :
 	return template[1].split("-")
+
+
+func format(word : String, template : Array) -> String :
+	if template[4] : word = "'" + word + "'"
+	if template[2] : word = "\\textit{" + word + "}"
+	if template[3] : word = "\\textbf{" + word + "}"
+	return word
+	
