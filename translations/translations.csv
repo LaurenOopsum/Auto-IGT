@@ -1,13 +1,13 @@
 key,en,es
 SELECT_FILE,Select File,Elegir archivo
 SOURCE_SW,Software,Software
-START,Start:,Principio:
-END,End:,Fin:
-3_L_MORPH,Morpheme Gloss - 3 Lines,Glosa de morfemas - 3 líneas
-4_L_MORPH,Morpheme Gloss - 4 Lines,Glosa de morfemas - 4 líneas
-3_L_WORD,Word Gloss - 3 Lines,Glosa de palabras - 3 líneas
-4_L_WORD,Word Gloss - 4 Lines,Glosa de palabras - 4 líneas
-CUSTOM_G,Custom gloss format,Formato a medida de glosa
+START_PH,Start:,Principio:
+END_PH,End:,Fin:
+3_L_MORPH,Morpheme Gloss - 3 Lines,Morfemas - 3 líneas
+4_L_MORPH,Morpheme Gloss - 4 Lines,Morfemas - 4 líneas
+3_L_WORD,Word Gloss - 3 Lines,Palabras - 3 líneas
+4_L_WORD,Word Gloss - 4 Lines,Palabras - 4 líneas
+CUSTOM_G,Custom gloss format,Formato a medida
 LINE_COUNT,Line count,Recuento de líneas
 WRAPPING,Wrapping,Ajuste del texto
 INST_BUTTON,Instructions,Instrucciones
@@ -22,3 +22,9 @@ RD_MORPH,Morpheme,Morfema
 RD_ITALIC,Italic,Itálica
 RD_BOLD,Bold,Negrita
 RD_QUOTES,'Single Quotes','Comilla simples'
+RD_LEVEL,Level,Nivel
+RD_TYPE,Line,Línea
+GL_CAT_MORPH,Morpheme glosses,Glosas de morfemas
+GL_CAT_WORD,Word glosses,Glosas de palabras
+GL_LINE_3,Three lines,Tres líneas
+GL_LINE_4,Four lines,Cuatro líneas

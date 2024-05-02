@@ -128,18 +128,19 @@ script = ExtResource( 5 )
 margin_top = 45.0
 margin_right = 470.0
 margin_bottom = 69.0
+custom_constants/separation = 7
 alignment = 1
 
 [node name="Start" type="Label" parent="Page/Body/FileSettings/PhraseNumbers"]
-margin_left = 36.0
+margin_left = 51.0
 margin_top = 5.0
-margin_right = 98.0
+margin_right = 113.0
 margin_bottom = 19.0
 text = "START_PH"
 
 [node name="StartNum" type="LineEdit" parent="Page/Body/FileSettings/PhraseNumbers"]
-margin_left = 118.0
-margin_right = 176.0
+margin_left = 120.0
+margin_right = 178.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 30, 0 )
 size_flags_horizontal = 4
@@ -148,6 +149,11 @@ context_menu_enabled = false
 shortcut_keys_enabled = false
 placeholder_text = "1"
 script = ExtResource( 13 )
+
+[node name="VSeparator" type="VSeparator" parent="Page/Body/FileSettings/PhraseNumbers"]
+margin_left = 185.0
+margin_right = 189.0
+margin_bottom = 24.0
 
 [node name="End" type="Label" parent="Page/Body/FileSettings/PhraseNumbers"]
 margin_left = 196.0
@@ -158,8 +164,8 @@ custom_colors/font_color = Color( 0.219608, 0.196078, 0.196078, 1 )
 text = "END_PH"
 
 [node name="EndNum" type="LineEdit" parent="Page/Body/FileSettings/PhraseNumbers"]
-margin_left = 267.0
-margin_right = 325.0
+margin_left = 254.0
+margin_right = 312.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 30, 0 )
 size_flags_horizontal = 4
@@ -172,14 +178,19 @@ middle_mouse_paste_enabled = false
 selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 
+[node name="VSeparator2" type="VSeparator" parent="Page/Body/FileSettings/PhraseNumbers"]
+margin_left = 319.0
+margin_right = 323.0
+margin_bottom = 24.0
+
 [node name="Presets" type="MenuButton" parent="Page/Body/FileSettings/PhraseNumbers"]
-margin_left = 345.0
-margin_right = 433.0
+margin_left = 330.0
+margin_right = 418.0
 margin_bottom = 24.0
 text = "3_L_MORPH"
 flat = false
 align = 0
-items = [ "Morpheme Glosses", null, 0, false, false, 7, 0, null, "", true, "3 lines", null, 0, false, false, 0, 0, null, "", false, "4 lines", null, 0, false, false, 1, 0, null, "", false, "Word glosses", null, 0, false, false, 6, 0, null, "", true, "3 lines", null, 0, false, false, 2, 0, null, "", false, "4 lines", null, 0, false, false, 3, 0, null, "", false, "", null, 0, false, false, 5, 0, null, "", true, "Custom gloss format", null, 0, false, false, 4, 0, null, "", false ]
+items = [ "GL_CAT_MORPH", null, 0, false, false, 7, 0, null, "", true, "GL_LINE_3", null, 0, false, false, 0, 0, null, "", false, "GL_LINE_4", null, 0, false, false, 1, 0, null, "", false, "GL_CAT_WORD", null, 0, false, false, 6, 0, null, "", true, "GL_LINE_3", null, 0, false, false, 2, 0, null, "", false, "GL_LINE_4", null, 0, false, false, 3, 0, null, "", false, "", null, 0, false, false, 5, 0, null, "", true, "CUSTOM_G", null, 0, false, false, 4, 0, null, "", false ]
 script = ExtResource( 8 )
 
 [node name="RowDefinitions" type="VBoxContainer" parent="Page/Body/FileSettings"]
@@ -306,7 +317,7 @@ margin_bottom = 475.0
 rect_min_size = Vector2( 600, 350 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-window_title = "Select a File"
+window_title = "SELECT_FILE"
 dialog_hide_on_ok = true
 mode_overrides_title = false
 mode = 0
