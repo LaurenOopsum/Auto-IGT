@@ -54,6 +54,7 @@ func _add_new_phrase(template : Array) :
 				if !row_template.has(item.attributes[att]) : is_match = false
 			if is_match : 
 				phrase_label.text = item.node_value
+				phrase_label.format(template)
 				add_child(phrase_label)
 				return
 
@@ -96,8 +97,11 @@ func _create_labels(template : Array, array : Array) -> Array :
 	for x in array :
 		var items : Array = x.get_matching_items(match_pattern)
 		var label := PreviewText.new()
-		label.level = template[0] # == C.TYPE.WORD
-		if items.size() > 0 : label.text = items[0].node_value
+		label.level = template[0] 
+		if items.size() > 0 : 
+			label.text = items[0].node_value
+			label.format(template)
+		
 		labels.append(label)
 	
 	return labels

@@ -6,18 +6,12 @@ extends Xerox
 
 func clipboard_copy() :
 	var latext : String = C.OPEN_CLOSE[C.MARKUP.LATEX][0]
-	
 	var row_node_arrays := get_row_node_arrays()
-	
 	var col_count := get_col_count(row_node_arrays)
-	
 	latext += define_columns(col_count)
-	
 	latext += print_markup_rows(row_node_arrays, col_count) 
-	
 	latext += C.OPEN_CLOSE[C.MARKUP.LATEX][1]
-	
-	print(latext)
+	OS.set_clipboard(latext)
 
 
 func get_row_node_arrays() -> Array :
@@ -128,7 +122,7 @@ func add_single_val(val : GlossNode, template : Array) -> String :
 	var latext := ""
 	var match_items : Array = val.get_matching_items(get_pattern(template))
 	for item in match_items :
-		latext += item.node_value + " & "
+		latext += format(item.node_value, template) + " & "
 	return latext
 	
 func add_multicol_val(val : GlossNode, template : Array , col_count : int) -> String :

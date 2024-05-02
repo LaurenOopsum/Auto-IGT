@@ -21,6 +21,7 @@ func run_templates() :
 		C.PRESET.WORD4 : 
 			create_preset_format_rows(C.PRESET_TEMPLATES[C.PRESET.WORD4])
 		C.PRESET.CUSTOM : create_blank_rows()
+#	_on_GeneratePreview_pressed()
 
 ## Generate a preset
 func create_preset_format_rows(rows_values_array : Array) :

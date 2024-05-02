@@ -41,3 +41,6 @@ func _on_phrase_received(phrase_node : GlossNode, rows : Array) :
 	rows_data = rows
 	copy_igt()
 
+
+func _on_CopyButton_pressed():
+	if phrase && rows_data : copy_igt()

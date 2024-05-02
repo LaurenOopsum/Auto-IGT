@@ -15,7 +15,7 @@ func _on_tree_grown() :
 
 ## Set buttons active after file has been loaded
 func activate_buttons() :
-	$FileSettings/GeneratePreview.disabled = false
+	$FileSettings/ClipboardButtons/GeneratePreview.disabled = false
 	$FileSettings/Buttons/Programs.set_default_software()
 
 ## Create the template formatting rows

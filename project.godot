@@ -117,7 +117,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Auto IGT"
-config/icon="res://assets/icon.png"
+config/icon="res://images/icon.png"
 
 [autoload]
 
