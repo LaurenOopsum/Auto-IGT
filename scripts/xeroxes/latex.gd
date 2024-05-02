@@ -28,7 +28,7 @@ func get_row_node_arrays() -> Array :
 			row_node_arrays.append([phrase])
 		else :
 			var type_array := phrase.get_type_array(template[0])
-			type_array = _trim_type_array(type_array, template[1].split("-"))
+			type_array = _trim_type_array(type_array, get_pattern(template))
 			row_node_arrays.append(type_array)
 	
 	return row_node_arrays
@@ -67,28 +67,28 @@ func print_markup_rows(row_node_arrays : Array, col_count : int) -> String :
 	var match_patterns = rows_data.duplicate()
 	
 	for row in row_node_arrays :
-		var match_pattern : PoolStringArray = match_patterns.pop_front()[1].split("-")
+		var template : Array = match_patterns.pop_front()
 		match row[0].node_type :
-			C.TYPE.PHRASE : latext += _mu_phrase_row(row, col_count, match_pattern)
-			C.TYPE.WORD : latext += _mu_word_row(row, row_node_arrays, match_pattern)
-			C.TYPE.MORPH : latext += _mu_morph_row(row, match_pattern)
+			C.TYPE.PHRASE : latext += _mu_phrase_row(row, col_count, template)
+			C.TYPE.WORD : latext += _mu_word_row(row, row_node_arrays, template)
+			C.TYPE.MORPH : latext += _mu_morph_row(row, template)
 		latext += " \\\\\n"
 	
 	return latext 
 	
 
-func _mu_phrase_row(row : Array, col_count : int, match_pattern : PoolStringArray) -> String : 
-	return "\t" + add_multicol_val(row[0], match_pattern, col_count)
+func _mu_phrase_row(row : Array, col_count : int, template : Array) -> String : 
+	return "\t" + add_multicol_val(row[0], get_pattern(template), col_count)
 
-func _mu_word_row(row : Array, row_node_arrays : Array, match_pattern : PoolStringArray) -> String : 
+func _mu_word_row(row : Array, row_node_arrays : Array, template : Array) -> String : 
 	var latext := "\t"
 	
 	var morph_locs := _get_morph_locations(row_node_arrays)
 	
 	if morph_locs.size() > 0 : 
 		var morph_row : Array = row_node_arrays[morph_locs[0]]
-		latext += _set_words_yes_morphs(row, morph_row, match_pattern)
-	else : latext += _set_words_no_morphs(row, match_pattern)
+		latext += _set_words_yes_morphs(row, morph_row, get_pattern(template))
+	else : latext += _set_words_no_morphs(row, get_pattern(template))
 	
 	return latext
 
@@ -139,9 +139,13 @@ func add_multicol_val(word : GlossNode, match_pattern : PoolStringArray, col_cou
 	return latext + "}"
 
 
-func _mu_morph_row(row : Array, match_pattern : PoolStringArray) -> String : 
+func _mu_morph_row(row : Array, template : Array) -> String : 
 	var latext := "\t"
 	for morph in row :
-		latext += add_single_val(morph, match_pattern)
+		latext += add_single_val(morph, get_pattern(template))
 	latext = latext.rstrip(" & ")
 	return latext
+
+
+func get_pattern(template : Array) -> PoolStringArray :
+	return template[1].split("-")
