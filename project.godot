@@ -117,6 +117,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Auto IGT"
+config/description="Convert glosses saved in FLEx to IGT tables for your documents"
 run/main_scene="res://scenes/main.tscn"
 config/icon="res://images/icon.png"
 
@@ -139,6 +140,11 @@ window/stretch/aspect="keep"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[locale]
+
+test="es"
+translations=PoolStringArray( "res://translations/translations.en.translation", "res://translations/translations.es.translation" )
 
 [physics]
 

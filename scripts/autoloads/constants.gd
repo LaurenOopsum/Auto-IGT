@@ -21,12 +21,13 @@ enum MARKUP {LATEX, QUARTO_ST, QUARTO_DY}
 
 ## Names of the preset templates
 const PRESET_NAMES := [
-	"3 line morpheme gloss", 
-	"4 line morpheme gloss", 
-	"3 line word gloss", 
-	"4 line word gloss", 
-	"Custom gloss format"
+	"3_L_MORPH", 
+	"4_L_MORPH", 
+	"3_L_WORD", 
+	"4_L_WORD", 
+	"CUSTOM_G"
 	]
+
 
 ## Supported file formats, represented as file extensions
 const FT_NAMES := [".flextext"]

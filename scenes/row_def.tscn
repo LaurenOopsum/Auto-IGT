@@ -17,39 +17,39 @@ text = "1"
 
 [node name="Level" type="MenuButton" parent="."]
 margin_left = 12.0
-margin_right = 58.0
+margin_right = 84.0
 margin_bottom = 24.0
 focus_mode = 2
-text = "Level"
+text = "RD_LEVEL"
 flat = false
-items = [ "Paragraph", null, 0, false, true, 0, 0, null, "", false, "Phrase", null, 0, false, false, 1, 0, null, "", false, "Word", null, 0, false, false, 2, 0, null, "", false, "Morph", null, 0, false, false, 3, 0, null, "", false ]
+items = [ "RD_PARAGRAPH", null, 0, false, true, 0, 0, null, "", false, "RD_PHRASE", null, 0, false, false, 1, 0, null, "", false, "RD_WORD", null, 0, false, false, 2, 0, null, "", false, "RD_MORPH", null, 0, false, false, 3, 0, null, "", false ]
 script = ExtResource( 3 )
 
 [node name="Type" type="MenuButton" parent="."]
-margin_left = 62.0
-margin_right = 104.0
+margin_left = 88.0
+margin_right = 153.0
 margin_bottom = 24.0
 focus_mode = 2
-text = "Type"
+text = "RD_TYPE"
 flat = false
 script = ExtResource( 2 )
 
 [node name="Italic" type="CheckBox" parent="."]
-margin_left = 108.0
-margin_right = 168.0
+margin_left = 157.0
+margin_right = 250.0
 margin_bottom = 24.0
-text = "Italic"
+text = "RD_ITALIC"
 
 [node name="Bold" type="CheckBox" parent="."]
-margin_left = 172.0
-margin_right = 229.0
+margin_left = 254.0
+margin_right = 343.0
 margin_bottom = 24.0
-text = "Bold"
+text = "RD_BOLD"
 
 [node name="Quotes" type="CheckBox" parent="."]
-margin_left = 233.0
-margin_right = 353.0
+margin_left = 347.0
+margin_right = 452.0
 margin_bottom = 24.0
-text = "'Single quotes'"
+text = "RD_QUOTES"
 
 [connection signal="level_changed" from="Level" to="Type" method="_on_level_changed"]
