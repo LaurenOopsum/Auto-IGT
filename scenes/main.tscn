@@ -229,23 +229,23 @@ editable = false
 script = ExtResource( 10 )
 
 [node name="ClipboardButtons" type="HBoxContainer" parent="Page/Body/FileSettings"]
-margin_left = 138.0
+margin_left = 145.0
 margin_top = 143.0
-margin_right = 332.0
+margin_right = 325.0
 margin_bottom = 163.0
 size_flags_horizontal = 4
 
 [node name="GeneratePreview" type="Button" parent="Page/Body/FileSettings/ClipboardButtons"]
-margin_right = 125.0
+margin_right = 111.0
 margin_bottom = 20.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 disabled = true
-text = "Generate Preview"
+text = "Preview & Copy"
 
 [node name="MarkupLang" type="MenuButton" parent="Page/Body/FileSettings/ClipboardButtons"]
-margin_left = 145.0
-margin_right = 194.0
+margin_left = 131.0
+margin_right = 180.0
 margin_bottom = 20.0
 size_flags_horizontal = 4
 text = "LaTeX"
@@ -330,7 +330,7 @@ dialog_text = "1. Save your file in a supported format. Right now that's just .f
 
 4. Input the start and an optional end phrase. (Multiple phrases are not currently supported.) If only a start phrase is input, the tool will generate a table for a single phrase.
 
-5. Choose a preset glossing format or customize your own and click \"Generate Preview\".
+5. Choose a preset glossing format or customize your own and click \"Preview & Copy\".
 
 6. When the preview is formatted how you like, choose a markup language and click the \"Copy IGT\" button to copy the gloss to your clipboard. Only LaTeX markup is currently supported. Note that while the markup will preserve formatting such as bolding and italics, the displayed font will depend on your final document.
 
