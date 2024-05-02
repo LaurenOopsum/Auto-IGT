@@ -1,0 +1,24 @@
+key,en,es
+SELECT_FILE,Select File,Elegir archivo
+SOURCE_SW,Software,Software
+START,Start:,Principio:
+END,End:,Fin:
+3_L_MORPH,Morpheme Gloss - 3 Lines,Glosa de morfemas - 3 líneas
+4_L_MORPH,Morpheme Gloss - 4 Lines,Glosa de morfemas - 4 líneas
+3_L_WORD,Word Gloss - 3 Lines,Glosa de palabras - 3 líneas
+4_L_WORD,Word Gloss - 4 Lines,Glosa de palabras - 4 líneas
+CUSTOM_G,Custom gloss format,Formato a medida de glosa
+LINE_COUNT,Line count,Recuento de líneas
+WRAPPING,Wrapping,Ajuste del texto
+INST_BUTTON,Instructions,Instrucciones
+QUIT_BUTTON,Quit,Salir
+PREV_COPY,Preview & Copy,Prever y copiar
+PREV_TEXT,Preview will appear here,La vista previa aparecerá aquí.
+INST_TEXT,"1. Save your file in a supported format. Right now that's just .flextext.\p2. Click the ""Select File"" button and choose the file on your computer.\p3. The Source Software will automatically choose a default. Change it if needed. Right now, only .flextext files from FLEx are supported.\p4. Input the start and an optional end phrase. (Multiple phrases are not currently supported.) If only a start phrase is input, the tool will generate a table for a single phrase.\p5. Choose a preset glossing format or customize your own.\p6. Choose the format of your document and click ""Preview & Copy"". Note that while the markup will preserve formatting such as bolding and italics, the displayed font will depend on your final document.\pI hope AIGT is helpful for you. Email me at lcornwel@hawaii.edu if you have questions or suggestions.","1. Guarda tu archivo en un formato compatible. En este momento, es solo .flextext.\p2. Haz clic en ""Elegir archivo"" y selecciona el archivo en tu computadora.\p3. AIGT escogerá el software predeterminado. Ahora, solamente archivos de FLEx son compatibles.\p4. Entra el principio y un fin opcional. (Frases múltiples no actualmente son compatibles.) Con solo un principio, AIGT generará una tabla de una sola frase.\p5. Selecciona un formato de glosa predeterminada o personaliza tu propio.\p6. Escoge el formato de to documento (ahora, es solo LaTeX) y haz clic ""Prever y copiar"". Nota que el marcado mantenerá el formato como la cursiva, etc.. La fuente dependerá de tu documento final.\pEspero que AIGT es ayudable para tí. Enviame un correo electrónico a lcornwel@hawaii.edu si tenga dudas o sugerencias."
+RD_PARAGRAPH,Paragraph,Párrafo
+RD_PHRASE,Phrase,Frase
+RD_WORD,Word,Palbra
+RD_MORPH,Morpheme,Morfema
+RD_ITALIC,Italic,Itálica
+RD_BOLD,Bold,Negrita
+RD_QUOTES,'Single Quotes','Comilla simples'

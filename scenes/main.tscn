@@ -97,8 +97,8 @@ alignment = 1
 script = ExtResource( 1 )
 
 [node name="FileType" type="MenuButton" parent="Page/Body/FileSettings/Buttons"]
-margin_left = 87.0
-margin_right = 151.0
+margin_left = 95.0
+margin_right = 159.0
 margin_bottom = 20.0
 text = ".flextext"
 flat = false
@@ -106,20 +106,20 @@ items = [ ".flextext", null, 0, false, false, 0, 0, null, "", false ]
 script = ExtResource( 9 )
 
 [node name="SelectFile" type="Button" parent="Page/Body/FileSettings/Buttons"]
-margin_left = 171.0
-margin_right = 249.0
+margin_left = 179.0
+margin_right = 266.0
 margin_bottom = 20.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Select File"
+text = "SELECT_FILE"
 
 [node name="Programs" type="MenuButton" parent="Page/Body/FileSettings/Buttons"]
-margin_left = 269.0
-margin_right = 382.0
+margin_left = 286.0
+margin_right = 375.0
 margin_bottom = 20.0
 focus_mode = 2
 disabled = true
-text = "Source Software"
+text = "SOURCE_SW"
 flat = false
 align = 0
 script = ExtResource( 5 )
@@ -322,19 +322,19 @@ rect_min_size = Vector2( 700, 350 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 window_title = "Instructions"
-dialog_text = "1. Save your file in a supported format. Right now that's just .flextext.
+dialog_text = "	1. Save your file in a supported format. Right now that's just .flextext.
 
-2. Click the \"Select File\" button and choose the file on your computer.
+	2. Click the \"Select File\" button and choose the file on your computer.
 
-3. The Source Software will automatically choose a default. Change it if needed. Right now, only .flextext files from FLEx are supported.
+	3. The Source Software will automatically choose a default. Change it if needed. Right now, only .flextext files from FLEx are supported.
 
-4. Input the start and an optional end phrase. (Multiple phrases are not currently supported.) If only a start phrase is input, the tool will generate a table for a single phrase.
+	4. Input the start and an optional end phrase. (Multiple phrases are not currently supported.) If only a start phrase is input, the tool will generate a table for a single phrase.
 
-5. Choose a preset glossing format or customize your own and click \"Preview & Copy\".
+	5. Choose a preset glossing format or customize your own and click \"Preview & Copy\".
 
-6. When the preview is formatted how you like, choose a markup language and click the \"Copy IGT\" button to copy the gloss to your clipboard. Only LaTeX markup is currently supported. Note that while the markup will preserve formatting such as bolding and italics, the displayed font will depend on your final document.
+	6. When the preview is formatted how you like, choose a markup language and click the \"Copy IGT\" button to copy the gloss to your clipboard. Only LaTeX markup is currently supported. Note that while the markup will preserve formatting such as bolding and italics, the displayed font will depend on your final document.
 
-I hope AIGT is helpful for you. Email me at lcornwel@hawaii.edu if you have questions or suggestions."
+	I hope AIGT is helpful for you. Email me at lcornwel@hawaii.edu if you have questions or suggestions."
 dialog_autowrap = true
 script = ExtResource( 11 )
 
