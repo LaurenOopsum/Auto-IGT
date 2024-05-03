@@ -70,6 +70,8 @@ func _is_set_phrase(cur_phrase : GlossItem) -> bool :
 func add_word_row(template : Array) :
 	_set_phrase_grid()
 	_set_words_array()
+	for word in words_array :
+		if word.grid : word.grid = null
 	# The PreviewLabels that will be displayed on screen
 	var word_labels := _create_labels(template, words_array)
 	# Set grid to the right number of columns
