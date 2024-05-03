@@ -29,8 +29,8 @@ func get_settings() -> Array :
 
 func get_level() -> int :
 	match $Level.text :
-		"Paragraph" : return C.TYPE.PARAGRAPH
-		"Phrase" : return C.TYPE.PHRASE
-		"Word" : return C.TYPE.WORD
-		"Morph" : return C.TYPE.MORPH
+		"RD_PARAGRAPH" : return C.TYPE.PARAGRAPH
+		"RD_PHRASE" : return C.TYPE.PHRASE
+		"RD_WORD" : return C.TYPE.WORD
+		"RD_MORPH" : return C.TYPE.MORPH
 	return -1

@@ -55,6 +55,7 @@ func define_columns(col_count : int) -> String :
 
 
 func print_markup_rows(row_node_arrays : Array, col_count : int) -> String :
+	print(row_node_arrays)
 	var latext := ""
 	
 	var match_patterns = rows_data.duplicate()

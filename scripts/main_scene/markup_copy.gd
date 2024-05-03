@@ -37,6 +37,7 @@ func run_xerox() : xerox.copy(phrase, rows_data)
 
 
 func _on_phrase_received(phrase_node : GlossNode, rows : Array) :
+	print(rows)
 	phrase = phrase_node
 	rows_data = rows
 	copy_igt()
