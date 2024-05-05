@@ -31,4 +31,8 @@ The file navigation system in the program isn't the best, so I recommend copying
 
 Aigt has English and Spanish right now. More translations can be added/suggested here: https://docs.google.com/spreadsheets/d/1w3n8Ff-DTi8GeUK0UTBKm4_EODrW-OpYg7pKl0o-wV4/edit?usp=sharing
 
+## Requests
+
+Requests for new file types / programs to import from and export to can be made here: https://forms.gle/8NNwEwtepi7zsxSN6
+
 To add another language, include the langauge code at the top of the column (found here: https://docs.godotengine.org/en/3.5/tutorials/i18n/locales.html#doc-locales) and the translation of each row in the cell below.
