@@ -6,7 +6,6 @@ extends Label
 var level : int
 
 func format(template) :
-	var font : Font
 	if template[4] : text = "'" + text + "'"
 	if template[2] && template [3] : 
 		change_font("res://dynamic_fonts/fonts/arialbi.ttf")
