@@ -74,6 +74,7 @@ func print_markup_rows(row_node_arrays : Array, col_count : int) -> String :
 func _mu_phrase_row(row : Array, col_count : int, template : Array) -> String : 
 	return "\t" + add_multicol_val(row[0], template, col_count)
 
+
 func _mu_word_row(row : Array, row_node_arrays : Array, template : Array) -> String : 
 	var latext := "\t"
 	
