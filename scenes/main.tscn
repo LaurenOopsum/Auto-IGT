@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scripts/main_scene/buttons.gd" type="Script" id=1]
 [ext_resource path="res://scripts/main_scene/file_dialog.gd" type="Script" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://scripts/main_scene/markup_copy.gd" type="Script" id=14]
 [ext_resource path="res://scripts/preview_nodes/preview_text.gd" type="Script" id=15]
 [ext_resource path="res://dynamic_fonts/fonts/arial.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://images/warning.png" type="Texture" id=17]
+[ext_resource path="res://scripts/main_scene/warning.gd" type="Script" id=18]
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
@@ -259,6 +261,7 @@ margin_left = 103.0
 margin_right = 152.0
 margin_bottom = 20.0
 size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "LaTeX"
 flat = false
 items = [ "LaTeX", null, 0, false, false, 0, 0, null, "", false, "Quarto (Static)", null, 0, false, false, 1, 0, null, "", false, "Quarto (Dynamic)", null, 0, false, true, 2, 0, null, "", false ]
@@ -272,6 +275,18 @@ margin_bottom = 20.0
 size_flags_horizontal = 4
 shortcut_in_tooltip = false
 text = "Copy IGT"
+
+[node name="Warning" type="TextureRect" parent="Page/Body/FileSettings/ClipboardButtons"]
+visible = false
+margin_left = 172.0
+margin_right = 197.0
+margin_bottom = 23.0
+texture = ExtResource( 17 )
+stretch_mode = 4
+script = ExtResource( 18 )
+__meta__ = {
+"_editor_description_": "Danger Warning by AcatXlo on Pixabay"
+}
 
 [node name="Preview" type="VBoxContainer" parent="Page/Body"]
 margin_left = 490.0
@@ -349,6 +364,8 @@ script = ExtResource( 11 )
 [connection signal="toggled" from="Page/Body/FileSettings/RowDefinitions/RowCount/Wrapping" to="Page/Body/FileSettings/RowDefinitions/RowCount/WrapLines" method="_on_Wrapping_toggled"]
 [connection signal="text_changed" from="Page/Body/FileSettings/RowDefinitions/RowCount/WrapLines" to="Page/Body/FileSettings/RowDefinitions/RowCount/Wrapping" method="_on_WrapLines_text_changed"]
 [connection signal="pressed" from="Page/Body/FileSettings/ClipboardButtons/GeneratePreview" to="Page/Body/FileSettings/RowDefinitions" method="_on_GeneratePreview_pressed"]
+[connection signal="hide_warning" from="Page/Body/FileSettings/ClipboardButtons/MarkupLang" to="Page/Body/FileSettings/ClipboardButtons/Warning" method="_on_hide_warning"]
+[connection signal="show_warning" from="Page/Body/FileSettings/ClipboardButtons/MarkupLang" to="Page/Body/FileSettings/ClipboardButtons/Warning" method="_on_show_warning"]
 [connection signal="pressed" from="Page/Body/FileSettings/ClipboardButtons/CopyButton" to="Page/Body/FileSettings/ClipboardButtons/MarkupLang" method="_on_CopyButton_pressed"]
 [connection signal="send_phrase" from="Page/Body/Preview/Whiteboard/PreviewLines" to="Page/Body/FileSettings/ClipboardButtons/MarkupLang" method="_on_phrase_received"]
 [connection signal="connect_parser" from="FileDialog" to="Page/Body" method="_connect_parser"]

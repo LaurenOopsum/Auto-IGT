@@ -28,3 +28,4 @@ GL_CAT_MORPH,Morpheme glosses,Glosas de morfemas
 GL_CAT_WORD,Word glosses,Glosas de palabras
 GL_LINE_3,Three lines,Tres líneas
 GL_LINE_4,Four lines,Cuatro líneas
+QUARTO_STATIC_WARNING,Static Quarto tables are formatted using HTML code. Paste the copied code directly in the source code of your Quarto document.,Las tablas estáticas de Quarto se formatean utilizando código HTML. Pegue el código copiado directamente en el código fuente de su documento Quarto.

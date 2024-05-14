@@ -1,5 +1,7 @@
 extends DropDown
 
+signal show_warning(warning_type)
+signal hide_warning()
 
 var phrase : GlossNode
 var rows_data : Array
@@ -22,6 +24,9 @@ func _on_option_selected(idx : int) :
 	var id := pop_up.get_item_index(idx)
 	text = pop_up.get_item_text(id)
 	if phrase : copy_igt()
+	if idx == C.MARKUP.QUARTO_STATIC :
+		emit_signal("show_warning", idx)
+	else : emit_signal("hide_warning")
 
 
 func copy_igt() :
