@@ -261,7 +261,7 @@ margin_bottom = 20.0
 size_flags_horizontal = 4
 text = "LaTeX"
 flat = false
-items = [ "LaTeX", null, 0, false, false, 0, 0, null, "", false, "Quarto (Static)", null, 0, false, true, 1, 0, null, "", false, "Quarto (Dynamic)", null, 0, false, true, 2, 0, null, "", false ]
+items = [ "LaTeX", null, 0, false, false, 0, 0, null, "", false, "Quarto (Static)", null, 0, false, false, 1, 0, null, "", false, "Quarto (Dynamic)", null, 0, false, true, 2, 0, null, "", false ]
 script = ExtResource( 14 )
 
 [node name="CopyButton" type="Button" parent="Page/Body/FileSettings/ClipboardButtons"]

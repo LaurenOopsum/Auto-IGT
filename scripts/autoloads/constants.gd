@@ -7,17 +7,9 @@ enum TYPE {PARAGRAPH, PHRASE, WORD, MORPH, ITEM, IGT}
 enum PRESET {MORPH3, MORPH4, WORD3, WORD4, CUSTOM}
 enum FILE_TYPE {FLEXTEXT}
 enum PROGRAM {FLEX, ELAN}
-enum MARKUP {LATEX, QUARTO_ST, QUARTO_DY}
+enum MARKUP {LATEX, QUARTO_STATIC, QUARTO_DYNAMIC}
+enum BLOCK {CODE_OPEN, CODE_CLOSE, ROW_OPEN, ROW_CLOSE, CELL_OPEN, CELL_CLOSE, MULTICOL_OPEN, MULTICOL_MID, MULTICOL_CLOSE, SEPARATOR, ITALIC_OPEN, ITALIC_CLOSE, BOLD_OPEN, BOLD_CLOSE}
 
-## Names of the different types of nodes
-#const TYPE_NAMES := [
-#	
-#	"paragraph",
-#	"phrase",
-#	"word",
-#	"morph",
-#	"item"
-#]
 
 ## Names of the preset templates
 const PRESET_NAMES := [
@@ -59,20 +51,45 @@ const PRESET_TEMPLATES := [
 ]
 
 
-const OPEN_CLOSE := [
-	[
+const MARKUP_TEXT := [
+	[ # LaTeX
 		"\\begin{tabular}{ ",
-		"\\end{tabular}"
+		"\\end{tabular}",
+		"\t",
+		" \\\\\n",
+		"",
+		"",
+		"\\multicolumn{",
+		"}{ l }{",
+		"}",
+		" & ",
+		"\\textit{",
+		"}",
+		"\\textbf{",
+		"}"
 	],
-	[
-		"Quarto static open",
-		"Quarto static close"
+	[ # Quarto static HTML table
+		"```{=html}\n\n<head>\n\t<style>\n\t\ttable, th, tr, td {\n\t\t\tborder-top: 1px solid transparent;\n\t\t\tborder-bottom: 1px solid transparent;\n\t\t}\n\t</style>\n</head>\n\n<table>\n\t<tbody>\n",
+		"\t</tbody>\n</table>\n```",
+		"\t\t<tr>\n",
+		"\t\t</tr>\n",
+		"\t\t\t<td>",
+		"</td>\n",
+		"\t\t\t<td colspan=",
+		">",
+		"</td>\n",
+		"",
+		"<i>",
+		"</i>",
+		"<b>",
+		"</b>"
 	],
 	[
 		"Quarto dynamic open",
 		"Quarto dymanic close"
 	]
 ]
+
 
 
 ## Loads a new instance of a RowDef template
