@@ -10,7 +10,11 @@ var words_array := []
 
 func create_preview(rows_data : Array) :
 	for child in get_children() : child.queue_free()
+	if phrase && phrase.grid : phrase.grid = null
+	words_array = []
 	grab_phrase(V.gloss_tree) # Set the desired phrase to gloss
+#	if phrase.grid : phrase.grid = null
+	print(phrase)
 	if V.end : print("Multiple phrases not yet supported")
 	else : 
 		for template in rows_data : print_preview_row(template)
@@ -38,7 +42,6 @@ func print_preview_row(template : Array) :
 ## Creates a non-aligned row of text in the preview
 func add_phrase_row(template : Array) :
 	if phrase.grid : phrase.grid = null
-#	var type : int = template[0]
 	_add_new_phrase(template)
 
 ## Displays a phrase on the preview
@@ -61,14 +64,14 @@ func _add_new_phrase(template : Array) :
 ## Returns true if a phrase is the one selected by the user
 ## Returns false otherwise
 func _is_set_phrase(cur_phrase : GlossItem) -> bool :
-	for x in cur_phrase.attributes :
-		if cur_phrase.attributes[x] == "segnum" && cur_phrase.node_value == str(V.start) : 
+	for x in cur_phrase.get_attribute_values() :
+		if x == "segnum" && cur_phrase.node_value == str(V.start) : 
 			return true
 	return false
 
 ## Adds a row of the gloss that is aligned at the word level
 func add_word_row(template : Array) :
-	_set_phrase_grid()
+	_set_phrase_grid() ## Need to clear these grids??
 	_set_words_array()
 	for word in words_array :
 		if word.grid : word.grid = null
@@ -110,7 +113,7 @@ func _create_labels(template : Array, array : Array) -> Array :
 
 
 func add_morph_row(template : Array) :
-	_set_phrase_grid()
+	_set_phrase_grid() # Need to clear grids??
 	_set_words_array()
 	
 	var m_grids := []
@@ -134,6 +137,5 @@ func add_morph_row(template : Array) :
 	
 	for grid in m_grids :
 		if !grid.is_inside_tree() : phrase.grid.add_child(grid)
-
 
 

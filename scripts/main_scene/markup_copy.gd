@@ -20,10 +20,10 @@ func _ready() :
 ## Sets MenuButton text to the text of the selected option
 func _on_option_selected(idx : int) :
 	var pop_up := get_popup()
-	pop_up.set_current_index(idx)
+	V.markup = idx
 	var id := pop_up.get_item_index(idx)
 	text = pop_up.get_item_text(id)
-	if phrase : copy_igt()
+#	if phrase : copy_igt()
 	if idx == C.MARKUP.QUARTO_STATIC :
 		emit_signal("show_warning", idx)
 	else : emit_signal("hide_warning")
@@ -31,8 +31,7 @@ func _on_option_selected(idx : int) :
 
 func copy_igt() :
 	var path = "res://scripts/xeroxes/"
-	var pop_up := get_popup()
-	match pop_up.get_current_index() :
+	match V.markup :
 		C.MARKUP.LATEX : xerox = load(path + "latex.gd").new()
 		C.MARKUP.QUARTO_STATIC : xerox = load(path + "quarto_static.gd").new()
 		C.MARKUP.QUARTO_DYNAMIC : pass
