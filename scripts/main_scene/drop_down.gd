@@ -13,3 +13,7 @@ func _on_option_selected(idx : int) :
 	var pop_up := get_popup()
 	var id := pop_up.get_item_index(idx)
 	text = pop_up.get_item_text(id)
+	select_action(idx)
+
+## Overwrite in descendent classes
+func select_action(_idx : int) : pass

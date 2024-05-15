@@ -2,11 +2,15 @@
 
 extends Node
 
+enum LANG {ENGLISH, SPANISH}
+
 ## Basic int references to settings and options
 enum TYPE {PARAGRAPH, PHRASE, WORD, MORPH, ITEM, IGT}
 enum PRESET {MORPH3, MORPH4, WORD3, WORD4, CUSTOM}
+
 enum FILE_TYPE {FLEXTEXT}
 enum PROGRAM {FLEX, ELAN}
+
 enum MARKUP {LATEX, QUARTO_STATIC, QUARTO_DYNAMIC}
 enum BLOCK {CODE_OPEN, CODE_CLOSE, ROW_OPEN, ROW_CLOSE, CELL_OPEN, CELL_CLOSE, MULTICOL_OPEN, MULTICOL_MID, MULTICOL_CLOSE, SEPARATOR, ITALIC_OPEN, ITALIC_CLOSE, BOLD_OPEN, BOLD_CLOSE}
 
@@ -68,7 +72,7 @@ const MARKUP_TEXT := [
 		"\\textbf{",
 		"}"
 	],
-	[ # Quarto static HTML table
+	[ # Quarto static HTML
 		"```{=html}\n\n<head>\n\t<style>\n\t\ttable, th, tr, td {\n\t\t\tborder-top: 1px solid transparent;\n\t\t\tborder-bottom: 1px solid transparent;\n\t\t}\n\t</style>\n</head>\n\n<table>\n\t<tbody>\n",
 		"\t</tbody>\n</table>\n```",
 		"\t\t<tr>\n",
@@ -95,3 +99,4 @@ const MARKUP_TEXT := [
 ## Loads a new instance of a RowDef template
 func get_row_template() -> RowDef :
 	return load("res://scenes/row_def.tscn").instance()
+
